@@ -1,2 +1,46 @@
-<h1>Hello</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio amet dolores dolore. Voluptas aperiam harum aliquid eaque consectetur, tenetur sapiente corporis minima et, officia corrupti dolorem repellendus, ex praesentium temporibus.</p>
+<header class="header">
+  <div class="container container--header">
+    <!-- <svg class="logo">
+      <use href="./images/sprite.svg#logo"></use>
+    </svg> -->
+    <img src="./images/logo-symbols.svg" alt="" class="logo" />
+
+    <h1 class="header-title">FIND BEST EVENTS AROUND THE WORLD</h1>
+    <form>
+      <label class="form-label">
+        <input
+          type="text"
+          name="search"
+          class="search form-input"
+          placeholder="Start searching"
+        />
+        <svg class="search__icon form-input__icon" width="12" height="12">
+          <use href="./images/sprite.svg#loop"></use>
+        </svg>
+      </label>
+
+      <label class="form-label">
+        <input
+          type="text"
+          name="country-selector"
+          class="country-selector form-input"
+          list="countries"
+          placeholder="Choose country"
+        />
+        <svg
+          class="country-selector__icon form-input__icon"
+          width="12"
+          height="12"
+        >
+          <use href="./images/sprite.svg#arrow-down"></use>
+        </svg>
+        <datalist id="countries">
+          <option>USA</option>
+          <option>Ukraine</option>
+          <option>Belgium</option>
+          <option>Spain</option>
+        </datalist>
+      </label>
+    </form>
+  </div>
+</header>
