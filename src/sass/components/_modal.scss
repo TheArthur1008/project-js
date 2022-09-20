@@ -5,88 +5,162 @@
 }
 .backdrop {
     position: fixed;
-    visibility: visible;
     top: 0;
     left: 0;
-    overflow: hidden;
-    z-index: 150;
+    z-index: 100;
     width: 100%;
     height: 100%;
+    overflow-y: auto;
     background-color: rgba(32, 13, 29, 0.6);
-    transition: opacity var(--transition-time-and-func), visibility 250ms linear,
-        transform var(--transition-time-and-func);
+    transition: opacity 500ms linear, visibility 500ms linear;
+}
+.modal {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 20px);
+    width: 96%;
+    height: fit-content;
+    max-width: 280px;
+    padding-top: 80px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 100px;
+    margin: 20px 20px auto;
+
+  
+    transform: translate(-50%, 0%);
+    border-radius: 150px 0px;
+    background-color: var(--modal-background-color);
+
+    @include for-tablet-up {
+        max-width: 704px;
+        left: calc(50% - 32px);
+        border-radius: 300px 0px;
+        padding-bottom: 40px;
+        margin: 160px 32px auto;
+    }
+
+    @include for-desktop-up {
+        max-width: 1034px;
+    }
 }
 .modal-close-btn{
         position: absolute;
         right: 8px;
         top: 8px;
         background-color: transparent;
-        // color: var(--accent-button-color);
-        fill:#2E009A;
+        color: var(--accent-button-color);
         border: none;
+        transition: all ease-in-out 300ms;
+        &:hover,
+            &:focus {
+                scale: 1.1;
+                color: #2E009A;
+            }
 }
 .close-svg{
-    // fill: green;
+    fill: currentColor;
 }
 .event-circle-img{
     max-width: 102px;
     margin: 0 auto 20px;
+    @include for-tablet-up {
+            margin-bottom: 40px;
+        }
+}
+.description-container{
+    @include for-tablet-up {
+            display: flex;
+            justify-content: center;
+        }
 }
 .event-large-img{
     display: none;
-}
-.modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 280px;
-    margin: 0 auto;
-    padding: 24px;
-    background-color: var(--modal-background-color);
-    border-radius: 150px 0px;
-    transform: translate(-50%, -50%);
-    visibility: visible;
-    overflow-x: visible;
-
-    font-family: Montserrat;
-        // box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-        //     0px 2px 1px rgba(0, 0, 0, 0.2);
-
     @include for-tablet-up {
-        max-width: 734px;
+        display: block;
+        max-width: 250px;
+        height: 100%;
+        margin-right: 32px;
     }
-
     @include for-desktop-up {
-        max-width: 1278px;
+        max-width: 427px;
     }
 }
+
 .event-info-item{
     display: flex;
     flex-direction: column;
     align-items: center;
+    @include for-tablet-up {
+            align-items: flex-start;
+        }
+        
+}
+.event-info-item:not(:last-child){
     margin-bottom: 16px;
+    @include for-desktop-up {
+            margin-bottom: 20px;
+        }
 }
 .event-info__header{
     @include font (600, 20px, 24px);
-
     color: var(--accent-color);
-    
+    margin-bottom: 5px;
+    @include for-desktop-up {
+            margin-bottom: 7px;
+            @include font (600, 24px, 29px);
+        }
 }
 .event-info__description{
     max-width: 245px;
+    @include for-tablet-up {
+        max-width: 287px;
+    }
+        @include for-desktop-up {
+            max-width: 427px;
+        }
 }
 .header__prices{
     margin-bottom: 8px;
+    @include for-tablet-up {
+            margin-bottom: 5px;
+        }
+                @include for-desktop-up {
+                    margin-bottom: 7px;
+                }
 }
 .event-info{
-    justify-content: center;
     @include font (400, 16px, 20px);
     color: var(--primary-color);
+    @include for-desktop-up {
+            @include font (400, 18px, 22px);
+        }
 }
-
+.event-info__date,
+.event-info__city {
+    margin-bottom: 3px;
+    @include for-desktop-up {
+            margin-bottom: 5px;
+        }
+}
+.tickets{
+    margin-bottom: 24px;
+    @include for-tablet-up {
+            margin-bottom: 40px;
+        }
+}
+.ticket-std {
+    margin-bottom: 16px;
+    @include for-desktop-up {
+            margin-bottom: 32px;
+        }
+}
 .ticket-wrap{
     display: flex;
     margin-bottom: 16px;
+    @include for-desktop-up {
+            margin-bottom: 20px;
+        }
 }
 .barcode{
     width: 24px;
@@ -96,29 +170,35 @@
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 16px;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
-    transition: all ease 500ms;
+    transition: all ease 250ms;
     background-color: var(--accent-button-color);
     color: var(--secondary-white-color);
     @include font (500, 16px, 20px);
+    &:hover,
+    &:focus {
+            background-color: #2E009A;
+        }
+        @include for-tablet-up {
+            margin-left: 0;
+        }
 }
-.buy-button:hover{
-    background-color: #2E009A;
-    
-}
+
 .more-btn{
     display: block;
     padding: 10px 3px;
     margin-right: auto;
     margin-left: auto;
-    margin-bottom: 100px;
     border: 1px solid var(--accent-button-color);
     border-radius: 5px;
     background-color: transparent;
     color: var(--accent-button-color);
     @include font (500, 16px, 20px);
 
+    &:hover,
+        &:focus {
+            border-color: rgba(220, 86, 197, 1);
+        }
 }
