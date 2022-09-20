@@ -1,6 +1,13 @@
-<div class="backdrop">
+<div class="backdrop is-hidden">
   <div class="modal">
-    <button type="button" class="modal-close-btn">X</button>
+    <button type="button" class="modal-close-btn">
+      <img
+        src="./images/modal/close.svg"
+        class="close-svg"
+        width="17"
+        height="17"
+      />
+    </button>
     <img
       src="./images/modal/pic circle.png"
       alt="minimized poster of event"
@@ -36,34 +43,38 @@
           <p class="event-info__artist">The Black Eyed Peas</p>
         </li>
         <li class="event-info-item">
-          <h2 class="event-info__header">PRICES</h2>
+          <h2 class="event-info__header header__prices">PRICES</h2>
           <ul class="tickets">
             <li class="ticket-std">
-              <img
-                src="./images/modal/barcode.svg"
-                alt="barcode"
-                class="barcode"
-                width="30"
-              />
-              <p class="ticket-class">
-                Standart
-                <span class="ticket-price">300-500</span>
-                <span class="ticket-currency">UAH</span>
-              </p>
+              <div class="ticket-wrap">
+                <img
+                  src="./images/modal/barcode.svg"
+                  alt="barcode"
+                  class="barcode"
+                  width="30"
+                />
+                <p class="ticket-class">
+                  Standart
+                  <span class="ticket-price">300-500</span>
+                  <span class="ticket-currency">UAH</span>
+                </p>
+              </div>
               <button class="buy-button">BUY TICKETS</button>
             </li>
             <li class="ticket-vip">
-              <img
-                src="./images/modal/barcode.svg"
-                alt="barcode"
-                class="barcode"
-                width="30"
-              />
-              <p class="ticket-class">
-                VIP
-                <span class="ticket-price">1000-1500</span>
-                <span class="ticket-currency">UAH</span>
-              </p>
+              <div class="ticket-wrap">
+                <img
+                  src="./images/modal/barcode.svg"
+                  alt="barcode"
+                  class="barcode"
+                  width="30"
+                />
+                <p class="ticket-class">
+                  VIP
+                  <span class="ticket-price">1000-1500</span>
+                  <span class="ticket-currency">UAH</span>
+                </p>
+              </div>
               <button class="buy-button">BUY TICKETS</button>
             </li>
           </ul>
