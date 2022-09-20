@@ -1,5 +1,6 @@
 .main-container {
   text-align: center;
+  padding-bottom: 30px;
 }
 .event-list {
   padding-top: 9px;
@@ -13,16 +14,19 @@
 
   @include for-phone-only {
     justify-content: center;
+    margin-top: -56px;
   }
   @include for-tablet-up {
     padding-top: 10px;
     padding-right: 11px;
+    margin-top: -90px;
     column-gap: 43px;
     row-gap: 54px;
   }
   @include for-desktop-up {
     padding-top: 19px;
     padding-right: 21px;
+    margin-top: -76px;
     column-gap: 53px;
     row-gap: 59px;
   }
@@ -52,7 +56,7 @@
 
 .event-link::before {
   content: '';
-  z-index: -1;
+  z-index: 1;
   position: absolute;
   right: -10px;
   top: -9px;
