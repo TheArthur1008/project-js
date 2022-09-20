@@ -1,0 +1,170 @@
+.header {
+  background-image: linear-gradient(
+      rgba(11, 11, 11, 0.5),
+      rgba(11, 11, 11, 0.5)
+    ),
+    url(../images/header/pic-mob@1x.jpg);
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include for-tablet-only {
+    background-image: linear-gradient(
+        rgba(11, 11, 11, 0.5),
+        rgba(11, 11, 11, 0.5)
+      ),
+      url(../images/header/header-bg-tablet@1x.jpg);
+  }
+
+  @include for-desktop-up {
+    background-image: linear-gradient(
+        rgba(11, 11, 11, 0.5),
+        rgba(11, 11, 11, 0.5)
+      ),
+      url(../images/header/header-bg-desk@1x.jpg);
+  }
+}
+
+.container--header {
+  position: relative;
+  padding-top: 80px;
+  padding-bottom: 112px;
+  text-align: center;
+
+  @include for-tablet-up {
+    padding-top: 40px;
+    padding-bottom: 170px;
+  }
+
+  @include for-desktop-up {
+    padding-bottom: 196px;
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  width: 60px;
+  height: 25px;
+
+  @include for-tablet-up {
+    width: 100px;
+    height: 29px;
+  }
+
+  @include for-desktop-up {
+    width: 137px;
+    height: 70px;
+  }
+}
+
+.logo-bg {
+  position: absolute;
+  top: -90px;
+  left: -106px;
+  width: 213px;
+  height: 180px;
+
+  border-radius: 50%;
+  background: linear-gradient(
+    136.07deg,
+    rgba(196, 196, 196, 0.03) 10.75%,
+    rgba(196, 196, 196, 0) 92.33%
+  );
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  @include for-tablet-up {
+    width: 359px;
+    height: 302px;
+
+    top: -160px;
+    left: -179px;
+  }
+
+  @include for-desktop-up {
+    width: 386px;
+    height: 458px;
+
+    top: -240px;
+    left: -185px;
+  }
+}
+
+.header-title {
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 24px;
+
+  @include font(900, 18, 22);
+  color: var(--accent-color);
+
+  @include for-tablet-only {
+    width: 400px;
+    margin-bottom: 40px;
+
+    @include font(900, 30, 37);
+  }
+
+  @include for-desktop-up {
+    width: 608px;
+    margin-bottom: 48px;
+
+    @include font(900, 50, 61);
+  }
+}
+
+.form-label {
+  position: relative;
+}
+
+.form-input {
+  width: 87.5%;
+  height: 40px;
+
+  padding: 10px 32px;
+
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--secondary-white-color);
+
+  border: none;
+  border-radius: 20px;
+
+  @include for-tablet-only {
+    width: 336px;
+  }
+
+  @include for-desktop-up {
+    width: 288px;
+  }
+}
+
+.form-input::placeholder {
+  @include font(400, 16, 20);
+  color: var(--secondary-grey-color);
+}
+
+.form-input__icon {
+  position: absolute;
+  right: 32px;
+  top: 2px;
+
+  @include for-tablet-up {
+    &.search__icon {
+      right: 45px;
+    }
+  }
+}
+
+.search {
+  margin-bottom: 24px;
+
+  @include for-tablet-up {
+    margin-right: 13px;
+  }
+}
