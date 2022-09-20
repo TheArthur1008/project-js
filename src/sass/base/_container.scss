@@ -1,0 +1,13 @@
+.container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 15px;
+
+    @include for-tablet-up {
+        max-width: 734px;
+    }
+
+    @include for-desktop-up {
+        max-width: 1278px;
+    }
+}
