@@ -1,0 +1,132 @@
+.main-container {
+  text-align: center;
+}
+.event-list {
+  padding-top: 9px;
+  padding-right: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 32px;
+  column-gap: 30px;
+  justify-content: left;
+
+  @include for-phone-only {
+    justify-content: center;
+  }
+  @include for-tablet-up {
+    padding-top: 10px;
+    padding-right: 11px;
+    column-gap: 43px;
+    row-gap: 54px;
+  }
+  @include for-desktop-up {
+    padding-top: 19px;
+    padding-right: 21px;
+    column-gap: 53px;
+    row-gap: 59px;
+  }
+}
+
+.event-list-item {
+  position: relative;
+  max-width: calc((100% - 30px) / 2);
+
+  @include for-tablet-up {
+    max-width: calc((100% - 129px) / 4);
+  }
+
+  @include for-desktop-up {
+    max-width: calc((100% - 159px) / 4);
+  }
+}
+
+.event-link {
+  text-decoration: none;
+}
+
+.event-img {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.event-link::before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  right: -10px;
+  top: -9px;
+
+  border: 1px solid rgba(220, 86, 197, 0.3);
+  border-radius: 50px 0px;
+  width: 85%;
+  height: 41%;
+
+  @include for-tablet-up {
+    width: 120px;
+    height: 112px;
+    right: -11px;
+    top: -10px;
+  }
+
+  @include for-desktop-up {
+    width: 227px;
+    height: 213px;
+    right: -21px;
+    top: -19px;
+  }
+}
+
+.event-title {
+  @include font(700, 14px, 17px);
+  color: var(--accent-color);
+  margin-bottom: 4px;
+  text-align: center;
+
+  @include for-tablet-up {
+    @include font(700, 16px, 20px);
+  }
+
+  @include for-desktop-up {
+    margin-bottom: 8px;
+  }
+}
+
+.event-date {
+  @include font(400, 14px, 17px);
+  color: var(--secondary-white-color);
+  text-align: center;
+  margin-bottom: 4px;
+  @include for-tablet-up {
+    @include font(400, 16px, 20px);
+  }
+  @include for-desktop-up {
+    margin-bottom: 8px;
+  }
+}
+
+.event-location {
+  @include font(600, 12px, 15px);
+  color: var(--secondary-white-color);
+  text-align: center;
+
+  @include for-tablet-up {
+    @include font(600, 14px, 17px);
+  }
+}
+
+.event-location::before {
+  content: '';
+  display: inline-flex;
+  background-image: url(../images/main/point.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 6px;
+  height: 9px;
+  margin-right: 3px;
+
+  @include for-tablet-up {
+    width: 8px;
+    height: 10px;
+  }
+}
