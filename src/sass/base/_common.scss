@@ -26,8 +26,8 @@ body {
     min-height: 100vh;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
-    line-height: 1.5;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Monserrat', sans-serif;
+    @include font(400, 14px, 20px)
 }
 
 ul,
