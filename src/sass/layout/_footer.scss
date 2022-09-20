@@ -1,9 +1,9 @@
 .footer-container {
-    display: block;
-    // width: 300px;
-}
-
-.footer-copyright {
     text-align: center;
-    color: #939393;
+    color: var(--secondary-grey-color);
+    padding-bottom: 24px;
+    @include for-phone-only {
+        width: 280px;
+    }
+
 }

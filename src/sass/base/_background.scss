@@ -1,0 +1,15 @@
+.background-main-footer {
+    background-color: var(--primary-color);
+    
+
+    @include for-tablet-only {
+        background-image: url('../images/background-img/background-tablet.png');
+        // background-repeat: no-repeat;
+        // background-size: 100%;
+        
+    }
+
+    @include for-desktop-up {
+        background-image: url('../images/background-img/background-desc.png');
+    }
+};
