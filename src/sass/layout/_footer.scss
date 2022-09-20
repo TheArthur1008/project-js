@@ -1,6 +1,7 @@
 .footer-container {
     text-align: center;
     color: var(--secondary-grey-color);
+    padding-top: 30px;
     padding-bottom: 24px;
     @include for-phone-only {
         width: 280px;
