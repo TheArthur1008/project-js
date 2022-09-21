@@ -1,4 +1,5 @@
 import { toggleModal } from "./js/modal-opener.js";
+import { footerToggleModal } from "./js/footer-modal.js";
 import { DiscoveryFetch } from "./js/api.js";
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
@@ -18,4 +19,6 @@ const discoveryFetch = new DiscoveryFetch();
 // });
 
 toggleModal();
+footerToggleModal();
+
 
