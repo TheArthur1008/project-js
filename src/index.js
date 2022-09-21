@@ -12,4 +12,8 @@ const discoveryFetch = new DiscoveryFetch;
 toggleModal();
 =======
 
+<<<<<<< HEAD
+>>>>>>> 821e11327a54fd7f0ae753de89b9ae7d74174237
+=======
+
 >>>>>>> 821e11327a54fd7f0ae753de89b9ae7d74174237
