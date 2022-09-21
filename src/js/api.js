@@ -8,6 +8,7 @@ export class DiscoveryFetch {
     this.keyword = '';
     this.page = 0;
     this.countryCode = '';
+    this.id = '';
   }
 
   fetchEvents() {
@@ -27,6 +28,14 @@ export class DiscoveryFetch {
       size: this.size,
       page: this.page,
       sort: 'random',
+    };
+    return axios.get(`${this.#URL}`, { params: options });
+  }
+
+  fetchSelectedEvent() {
+    const options = {
+      apikey: this.#KEY,
+      id: this.id,
     };
     return axios.get(`${this.#URL}`, { params: options });
   }
