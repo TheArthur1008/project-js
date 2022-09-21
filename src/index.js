@@ -6,6 +6,7 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import Notiflix from 'notiflix';
 import createEventList from './js/templates/event-list.hbs';
+import { tuiPagination } from './js/tui_pagination.js';
 
 const discoveryFetch = new DiscoveryFetch();
 
@@ -15,7 +16,7 @@ let url;
 
 toggleModal();
 footerToggleModal();
-
+// tuiPagination();
 
 const imageSizeFilter = event => {
   event.map(el => {
