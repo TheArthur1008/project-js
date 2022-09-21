@@ -1,18 +1,22 @@
 {{#each this}}
-<li class="event-list-item">
+<li class="event-list-item" data-id="{{this.id}}">
        
-               <div class="img-wrapper">
-        <img class="event-img"
+               <div class="img-wrapper" data-id="{{this.id}}">
+        <img class="event-img" data-id="{{this.id}}"
                 width="120"
                 height="151"
             src="{{this.img}}"
             alt="{{this.name}}"/>
            </div>
                
-          <h3 class="event-title">{{this.name}}</h3>
-          <p class="event-date">{{this.dates.start.localDate}}</p>
-          {{#with this._embedded.venues}}
-          <p class="event-location">{{[0].name}}</p>
-          {{/with}}
+          <h3 class="event-title" data-id="{{this.id}}">{{this.name}}</h3>
+          <p class="event-date" data-id="{{this.id}}">{{this.dates.start.localDate}}</p>
+          
+          <p class="event-location" data-id="{{this.id}}">
+            {{#with this._embedded.venues}}
+            {{[0].name}}
+            {{/with}}
+            </p>
+          
       </li>
 {{/each}}
