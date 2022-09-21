@@ -6,7 +6,7 @@ export class DiscoveryFetch {
   constructor() {
     this.size = 16;
     this.keyword = '';
-    this.page = 1;
+    this.page = 0;
     this.countryCode = '';
   }
 
@@ -17,6 +17,16 @@ export class DiscoveryFetch {
       size: this.size,
       page: this.page,
       countryCode: this.countryCode,
+    };
+    return axios.get(`${this.#URL}`, { params: options });
+  }
+
+  fetchRandomEvents() {
+    const options = {
+      apikey: this.#KEY,
+      size: this.size,
+      page: this.page,
+      sort: 'random',
     };
     return axios.get(`${this.#URL}`, { params: options });
   }
