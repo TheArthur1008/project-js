@@ -15,10 +15,5 @@ export function footerToggleModal () {
     function footerToggleModal() {
       refs.modal.classList.toggle("footer-is-hidden");
     }
-
-    function footerToggleModalOpen() {
-      refs.modal.classList.remove("footer-is-hidden");
-    }
   })();
-
 }
