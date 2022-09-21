@@ -6,9 +6,14 @@ import pathToBarcode from '../images/modal/barcode.svg';
 export function toggleModal () {
 const openModalEl = document.querySelector('.event-list');
 const backdropEl = document.querySelector('.backdrop');
+
   const closeModalBtn = document.querySelector('.modal-close-btn');
   const modalWindowEl = document.querySelector('.modal-wrap');
 const fetchModalData = new DiscoveryFetch();
+    const btnBuyStd = document.querySelector('.btn-std');
+    const btnBuyVip = document.querySelector('.btn-vip');
+    const btnMoreEl = document.querySelector('.more-btn');
+
 
 const imageSizeFilter = event => {
   event.map(el => {
