@@ -4,7 +4,8 @@
     <img src="./images/header/logo-symbols.svg" alt="" class="logo" />
 
     <h1 class="header-title">FIND BEST EVENTS AROUND THE WORLD</h1>
-    <form>
+
+    <form class="header-search-form js-form">
       <label class="form-label">
         <input
           type="text"
@@ -12,33 +13,73 @@
           class="search form-input"
           placeholder="Start searching"
         />
-        <svg class="search__icon form-input__icon" width="12" height="12">
-          <use href="./images/header/sprite.svg#loop"></use>
-        </svg>
+        <button type="submit" class="search-submit-btn">
+          <span class="search-icon"></span>
+        </button>
       </label>
 
-      <label class="form-label">
-        <input
-          type="text"
-          name="country-selector"
-          class="country-selector form-input"
-          list="countries"
-          placeholder="Choose country"
-        />
-        <svg
-          class="country-selector__icon form-input__icon"
-          width="12"
-          height="12"
-        >
-          <use href="./images/header/sprite.svg#arrow-down"></use>
-        </svg>
-        <datalist id="countries">
-          <option>USA</option>
-          <option>Ukraine</option>
-          <option>Belgium</option>
-          <option>Spain</option>
-        </datalist>
-      </label>
+      <div class="custom-select">
+        <select name="countrySelector" class="country-selector form-input">
+          <!-- <option value=""></option> -->
+          <option selected value="">Choose country</option>
+          <option value="AL">Albania</option>
+          <option value="AR">Argentina</option>
+          <option value="AU">Australia</option>
+          <option value="AT">Austria</option>
+          <option value="BE">Belgium</option>
+          <option value="BR">Brazil</option>
+          <option value="BG">Bulgaria</option>
+          <option value="CA">Canada</option>
+          <option value="HR">Croatia</option>
+          <option value="CY">Cyprus</option>
+          <option value="CZ">Czech Republic</option>
+          <option value="DK">Denmark</option>
+          <option value="EG">Egypt</option>
+          <option value="EE">Estonia</option>
+          <option value="FI">Finland</option>
+          <option value="FR">France</option>
+          <option value="GE">Georgia</option>
+          <option value="DE">Germany</option>
+          <option value="GR">Greece</option>
+          <option value="HU">Hungary</option>
+          <option value="IS">Iceland</option>
+          <option value="IE">Ireland</option>
+          <option value="IL">Israel</option>
+          <option value="IT">Italy</option>
+          <option value="JP">Japan</option>
+          <option value="LV">Latvia</option>
+          <option value="LT">Lithuania</option>
+          <option value="LU">Luxembourg</option>
+          <option value="MT">Malta</option>
+          <option value="MX">Mexico</option>
+          <option value="MD">Moldova, Republic of</option>
+          <option value="MC">Monaco</option>
+          <option value="ME">Montenegro</option>
+          <option value="NL">Netherlands</option>
+          <option value="NZ">New Zealand</option>
+          <option value="NO">Norway</option>
+          <option value="PE">Peru</option>
+          <option value="PL">Poland</option>
+          <option value="PT">Portugal</option>
+          <option value="QA">Qatar</option>
+          <option value="RO">Romania</option>
+          <option value="SM">San Marino</option>
+          <option value="RS">Serbia</option>
+          <option value="SG">Singapore</option>
+          <option value="SK">Slovakia</option>
+          <option value="SI">Slovenia</option>
+          <option value="ZA">South Africa</option>
+          <option value="ES">Spain</option>
+          <option value="SZ">Swaziland</option>
+          <option value="SE">Sweden</option>
+          <option value="CH">Switzerland</option>
+          <option value="TR">Turkey</option>
+          <option value="UA">Ukraine</option>
+          <option value="AE">United Arab Emirates</option>
+          <option value="GB">United Kingdom</option>
+          <option value="US">United States</option>
+        </select>
+      </div>
     </form>
   </div>
 </header>
