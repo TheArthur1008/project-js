@@ -8,14 +8,18 @@ import Notiflix from "notiflix";
 const discoveryFetch = new DiscoveryFetch();
 
 // discoveryFetch.keyword = "adele";
+// // discoveryFetch.countryCode = "US";
+// console.log(discoveryFetch.countryCode);
 
 
-// discoveryFetch.fetchEventsByKeywords().then(response => {
+// discoveryFetch.fetchEvents().then(response => {
 //     console.log(response.data);
 
 // }).catch(error => {
 //     console.log(error)
 // });
+
+
 
 toggleModal();
 
