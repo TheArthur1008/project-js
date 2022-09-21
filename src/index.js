@@ -13,6 +13,8 @@ const submitFormEl = document.querySelector('.js-form');
 let url;
 
 toggleModal();
+footerToggleModal();
+
 
 const imageSizeFilter = event => {
   event.map(el => {
