@@ -1,11 +1,9 @@
 import axios from "axios";
 
 export class DiscoveryFetch {
-  #URL;
-  #KEY;
+  #URL = 'https://app.ticketmaster.com/discovery/v2/events';
+  #KEY = 'kLVTW7dqtxEqtJSKTwWutczpAe3AhzWs';;
   constructor() {
-  this.#URL = 'https://app.ticketmaster.com/discovery/v2/events';
-  this.#KEY = 'kLVTW7dqtxEqtJSKTwWutczpAe3AhzWs';
     this.size = 16;
     this.keyword = '';
     this.page = 1;
