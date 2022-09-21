@@ -2,7 +2,10 @@
 export function toggleModal () {
 const openModalEl = document.querySelector('.event-list');
 const backdropEl = document.querySelector('.backdrop');
-const closeModalBtn = document.querySelector('.modal-close-btn');
+    const closeModalBtn = document.querySelector('.modal-close-btn');
+    const btnBuyStd = document.querySelector('.btn-std');
+    const btnBuyVip = document.querySelector('.btn-vip');
+    const btnMoreEl = document.querySelector('.more-btn');
 
 const toggleModal = () => {
   backdropEl.classList.toggle('is-open');
