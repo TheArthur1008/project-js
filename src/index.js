@@ -1,3 +1,4 @@
+import './js/header';
 import { toggleModal } from "./js/modal-opener.js";
 import { DiscoveryFetch } from "./js/api.js";
 import Pagination from 'tui-pagination';
@@ -22,4 +23,5 @@ const discoveryFetch = new DiscoveryFetch();
 
 
 toggleModal();
+
 
