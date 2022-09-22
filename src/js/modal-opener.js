@@ -2,6 +2,8 @@
 import createModalMarkup from './templates/modal-event.hbs';
 import { DiscoveryFetch } from './api.js';
 import pathToBarcode from '../images/modal/barcode.svg';
+import createEventList from './templates/event-list.hbs'
+import Notiflix from 'notiflix';
 
 export function toggleModal() {
   const openModalEl = document.querySelector('.event-list');
@@ -9,10 +11,12 @@ export function toggleModal() {
 
   const closeModalBtn = document.querySelector('.modal-close-btn');
   const modalWindowEl = document.querySelector('.modal-wrap');
-  const fetchModalData = new DiscoveryFetch();
-  const btnBuyStd = document.querySelector('.btn-std');
-  const btnBuyVip = document.querySelector('.btn-vip');
+
+
   const btnMoreEl = document.querySelector('.more-btn');
+
+const fetchModalData = new DiscoveryFetch();
+
 
   const defaultDescription = event => {
     event.map(el => {
@@ -70,28 +74,49 @@ export function toggleModal() {
 
   const onOpenModalBtnElClick = async event => {
     modalWindowEl.innerHTML = '';
-    console.dir(event.target);
+
     if (event.target.nodeName === 'UL') {
       return;
     }
     fetchModalData.id = event.target.dataset.id;
-    console.log(fetchModalData.id);
-    const { data } = await fetchModalData.fetchSelectedEvent();
-    console.log(data);
+
+    const { data } = await fetchModalData.fetchSelectedEvent()
+
     const events = data._embedded.events;
 
-    console.log(events);
     imageSizeFilter(events);
     events[0].svgUrl = pathToBarcode;
-    console.log(events[0].svgUrl);
-    modalWindowEl.insertAdjacentHTML('beforeend', createModalMarkup(events[0]));
-    defaultDescription(events);
+    modalWindowEl.insertAdjacentHTML('beforeend', createModalMarkup(events[0]))
+
+   defaultDescription(events);
     defaultLocation(events);
     defaultPrice(events);
     toggleModal();
+    
+    const btnMoreEl = document.querySelector('#more');
 
-    document.addEventListener('keydown', onEscBtnPress);
-  };
+    btnMoreEl.addEventListener('click', loadMoreByAuthor);
+
+  document.addEventListener('keydown', onEscBtnPress);
+};
+
+  const loadMoreByAuthor = async e => {
+    
+    fetchModalData.keyword = e.target.dataset.author;
+
+    const { data } = await fetchModalData.fetchEvents();
+    if (!data._embedded) {
+      Notiflix.Notify.failure('There are no events by this artist');
+      return
+    }
+    toggleModal();
+    const events = data._embedded.events;
+    imageSizeFilter(events);
+    const eventListEl = document.querySelector('.event-list');
+    eventListEl.innerHTML = createEventList(events);
+
+  }
+
 
   openModalEl.addEventListener('click', onOpenModalBtnElClick);
   closeModalBtn.addEventListener('click', toggleModal);

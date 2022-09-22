@@ -1,5 +1,13 @@
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import { DiscoveryFetch } from './api';
+import createEventList from './templates/event-list.hbs';
+
+const discoveryFetch = new DiscoveryFetch();
+const eventList = document.querySelector('.event-list');
+
 ////////Приймає відповідь з апішки в першому then
-export function tuiPagination(responseData) {
+function tuiPagination(responseData) {
   console.log(responseData);
   const { size, totalElements, totalPages, number } = responseData.page;
   console.log(size);
@@ -12,7 +20,7 @@ export function tuiPagination(responseData) {
     itemsPerPage: size,
     visiblePages: 5,
     page: 1,
-    centerAlign: false,
+    centerAlign: true,
     firstItemClassName: 'tui-first-child',
     lastItemClassName: 'tui-last-child',
   };
@@ -24,6 +32,7 @@ export function tuiPagination(responseData) {
   myPagination.on('beforeMove', evt => {
     const { page } = evt;
     console.log(evt);
+    discoveryFetch.page = page - 1;
 
     ///////логіка скривання першої стрілки
     if (page > 1) {
@@ -34,7 +43,7 @@ export function tuiPagination(responseData) {
     }
 
     //////Логіка скривання  перших двох стрілок
-    if (page >= 6) {
+    if (page >= 4) {
       setTimeout(() => {
         document
           .querySelector('.tui-first')
@@ -50,15 +59,18 @@ export function tuiPagination(responseData) {
       //     document.querySelector('.tui-last').classList.remove('visually-hidden');
       //   }
     }
-
     // ////////////////////Логіка виклику запитів
-
-    // discoveryFetch.page = page;
-    // discoveryFetch.fetchEvents();
   });
+
   // ///// Стрілка вперед:
   document.querySelector('.tui-last-child').innerHTML = '<span>&#8658</span>';
 
   ///// вказівник послідньої сторінки
   document.querySelector('.tui-last').innerHTML = `<span>${totalPages}</span>`;
 }
+
+const onLoadMore = currentPage => {
+  discoveryFetch.page = currentPage;
+};
+
+// export default

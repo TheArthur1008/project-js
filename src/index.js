@@ -1,4 +1,5 @@
 import './js/header';
+import './js/scroll-up-btn';
 import { toggleModal } from './js/modal-opener.js';
 import { DiscoveryFetch } from './js/api.js';
 import { footerToggleModal } from './js/footer-modal.js';
@@ -6,12 +7,14 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import Notiflix from 'notiflix';
 import createEventList from './js/templates/event-list.hbs';
-import { tuiPagination } from './js/tui_pagination.js';
+import './js/tui_pagination.js';
 
 const discoveryFetch = new DiscoveryFetch();
 
 const eventList = document.querySelector('.event-list');
 const submitFormEl = document.querySelector('.js-form');
+const paginationBtnEl = document.querySelector('#pagination');
+
 let url;
 
 toggleModal();
@@ -95,4 +98,9 @@ const onSearchIventsSubmit = async event => {
   }
 };
 
+const onLoadMore = () => {
+  myPagination.on();
+};
+
 submitFormEl.addEventListener('submit', onSearchIventsSubmit);
+paginationBtnEl.addEventListener('click', onLoadMore);
