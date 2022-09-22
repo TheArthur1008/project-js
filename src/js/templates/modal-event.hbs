@@ -42,11 +42,9 @@
                   width="30"
                 />
                 <p class="ticket-class">
-                  Standart
+                  Standart:
                   <span class="ticket-price">{{#with this.priceRanges}}
             {{[0].min}}
-            {{/with}} - {{#with this.priceRanges}}
-            {{[0].max}}
             {{/with}}</span>
                   <span class="ticket-currency">{{#with this.priceRanges}}
             {{[0].currency}}
@@ -64,11 +62,9 @@
                   width="30"
                 />
                 <p class="ticket-class">
-                  VIP
+                  VIP:
                   <span class="ticket-price">{{#with this.priceRanges}}
-            {{[1].min}}
-            {{/with}} - {{#with this.priceRanges}}
-            {{[1].max}}
+            {{[0].max}}
             {{/with}}</span>
                   <span class="ticket-currency">{{#with this.priceRanges}}
             {{[1].currency}}

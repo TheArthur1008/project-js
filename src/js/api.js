@@ -9,6 +9,7 @@ export class DiscoveryFetch {
     this.page = 0;
     this.countryCode = '';
     this.id = '';
+    // this.location = 'No location information';
   }
 
   fetchEvents() {

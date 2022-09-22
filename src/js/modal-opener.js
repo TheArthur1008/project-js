@@ -5,47 +5,78 @@ import pathToBarcode from '../images/modal/barcode.svg';
 import createEventList from './templates/event-list.hbs'
 import Notiflix from 'notiflix';
 
-export function toggleModal () {
-const openModalEl = document.querySelector('.event-list');
-const backdropEl = document.querySelector('.backdrop');
+export function toggleModal() {
+  const openModalEl = document.querySelector('.event-list');
+  const backdropEl = document.querySelector('.backdrop');
 
   const closeModalBtn = document.querySelector('.modal-close-btn');
   const modalWindowEl = document.querySelector('.modal-wrap');
+
+
+  const btnMoreEl = document.querySelector('.more-btn');
+
 const fetchModalData = new DiscoveryFetch();
-  
-  
 
 
-const imageSizeFilter = event => {
-  event.map(el => {
-    el.images.map(el => {
-      if (el.width === 1024) {
-        url = el.url;
+  const defaultDescription = event => {
+    event.map(el => {
+      if (!el.description) {
+        const url = `${el.url}`;
+        const descr = document.querySelector('.event-info__description');
+        descr.innerHTML = `Visit <a class="modal-info-link" href="${url}">website</a> for more information`;
       }
     });
-    el.img = url;
-  });
-};  
-  
-const toggleModal = () => {
-  backdropEl.classList.toggle('is-open');
+  };
 
-  if (!backdropEl.classList.contains('is-open')) {
-    document.removeEventListener('keydown', onEscBtnPress);
-  }
-};
+  const defaultLocation = event => {
+    event.map(el => {
+      if (!el._embedded) {
+        const url = `${el.url}`;
+        const descr = document.querySelector('.event-info__city');
+        descr.innerHTML = `Visit <a class="modal-info-link" href="${url}">website</a> for more information`;
+      }
+    });
+  };
 
-const onEscBtnPress = event => {
-  if (event.code === 'Escape') {
-    toggleModal();
-  }
-};
+  const defaultPrice = event => {
+    event.map(el => {
+      if (!el.priceRanges) {
+        const ticketPriceList = document.querySelector('.tickets');
+        ticketPriceList.innerHTML = 'No prices information';
+      }
+    });
+  };
+
+  const imageSizeFilter = event => {
+    event.map(el => {
+      el.images.map(el => {
+        if (el.width === 1024) {
+          url = el.url;
+        }
+      });
+      el.img = url;
+    });
+  };
+
+  const toggleModal = () => {
+    backdropEl.classList.toggle('is-open');
+
+    if (!backdropEl.classList.contains('is-open')) {
+      document.removeEventListener('keydown', onEscBtnPress);
+    }
+  };
+
+  const onEscBtnPress = event => {
+    if (event.code === 'Escape') {
+      toggleModal();
+    }
+  };
 
   const onOpenModalBtnElClick = async event => {
     modalWindowEl.innerHTML = '';
 
     if (event.target.nodeName === 'UL') {
-      return
+      return;
     }
     fetchModalData.id = event.target.dataset.id;
 
@@ -57,7 +88,11 @@ const onEscBtnPress = event => {
     events[0].svgUrl = pathToBarcode;
     modalWindowEl.insertAdjacentHTML('beforeend', createModalMarkup(events[0]))
 
+   defaultDescription(events);
+    defaultLocation(events);
+    defaultPrice(events);
     toggleModal();
+    
     const btnMoreEl = document.querySelector('#more');
 
     btnMoreEl.addEventListener('click', loadMoreByAuthor);
@@ -82,17 +117,15 @@ const onEscBtnPress = event => {
 
   }
 
-  
-  
-openModalEl.addEventListener('click', onOpenModalBtnElClick);
-closeModalBtn.addEventListener('click', toggleModal);
 
-backdropEl.addEventListener('click', event => {
+  openModalEl.addEventListener('click', onOpenModalBtnElClick);
+  closeModalBtn.addEventListener('click', toggleModal);
 
-  const { target, currentTarget } = event;
+  backdropEl.addEventListener('click', event => {
+    const { target, currentTarget } = event;
 
-  if (target === currentTarget) {
-    toggleModal();
-  }
-});
+    if (target === currentTarget) {
+      toggleModal();
+    }
+  });
 }

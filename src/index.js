@@ -20,6 +20,20 @@ let url;
 toggleModal();
 footerToggleModal();
 
+const defaulValues = events => {
+  events.map(el => {
+    if (!el._embedded || !el._embedded.venues[0].name) {
+      el._embedded = {
+        venues: [
+          {
+            name: 'No location information',
+          },
+        ],
+      };
+    }
+  });
+};
+
 const imageSizeFilter = event => {
   event.map(el => {
     el.images.map(el => {
@@ -34,9 +48,8 @@ const imageSizeFilter = event => {
 const randomEvents = async () => {
   try {
     const { data } = await discoveryFetch.fetchRandomEvents();
-    console.log(data);
-    // tuiPagination(data);
     const events = data._embedded.events;
+    defaulValues(events);
     imageSizeFilter(events);
     eventList.insertAdjacentHTML('beforeend', createEventList(events));
   } catch (error) {
@@ -54,14 +67,13 @@ const onSearchIventsSubmit = async event => {
   discoveryFetch.keyword = event.currentTarget.elements.search.value;
   discoveryFetch.countryCode =
     event.currentTarget.elements.countrySelector.value;
-  console.dir(discoveryFetch.countryCode);
+
   try {
     if (discoveryFetch.keyword !== '') {
       const { data } = await discoveryFetch.fetchEvents();
-      console.log(data);
 
       const events = data._embedded.events;
-
+      defaulValues(events);
       imageSizeFilter(events);
 
       if (data.page.totalElements === null) {
@@ -78,7 +90,6 @@ const onSearchIventsSubmit = async event => {
       Notiflix.Notify.success(
         `Hooray! We found ${data.page.totalElements} events.`
       );
-      // gallery.refresh();
     }
   } catch (error) {
     Notiflix.Notify.failure(
