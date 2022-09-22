@@ -6,12 +6,14 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import Notiflix from 'notiflix';
 import createEventList from './js/templates/event-list.hbs';
-import { tuiPagination } from './js/tui_pagination.js';
+import './js/tui_pagination.js';
 
 const discoveryFetch = new DiscoveryFetch();
 
 const eventList = document.querySelector('.event-list');
 const submitFormEl = document.querySelector('.js-form');
+const paginationBtnEl = document.querySelector('#pagination');
+
 let url;
 
 toggleModal();
@@ -32,7 +34,7 @@ const randomEvents = async () => {
   try {
     const { data } = await discoveryFetch.fetchRandomEvents();
     console.log(data);
-    tuiPagination(data);
+    // tuiPagination(data);
     const events = data._embedded.events;
     imageSizeFilter(events);
     eventList.insertAdjacentHTML('beforeend', createEventList(events));
@@ -84,4 +86,9 @@ const onSearchIventsSubmit = async event => {
   }
 };
 
+const onLoadMore = () => {
+  myPagination.on();
+};
+
 submitFormEl.addEventListener('submit', onSearchIventsSubmit);
+paginationBtnEl.addEventListener('click', onLoadMore);
