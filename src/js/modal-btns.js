@@ -1,13 +1,20 @@
 'use strict';
 import { DiscoveryFetch } from './api.js';
 
-const btnStdEl = document.querySelector('.buy-std-btn');
-const btnVipEl = document.querySelector('.buy-vip-btn');
 const btnMoreEl = document.querySelector('.more-btn');
 
 const fetchModalData = new DiscoveryFetch();
-
-
+const openLinkInNewTab = async (e) => {
+    e.preventDefault();
+    fetchModalData.id = e.target.dataset.id;
+    console.log(fetchModalData.id);
+    const { data } = await fetchModalData.fetchSelectedEvent()
+    console.log(data.url);
+    console.dir(e.target);
+    console.log(fetchModalData);
+    
+}
+btnMoreEl.addEventListener('click', openLinkInNewTab)
 // function onBtnBuyTicketsStd(e) {
 
 //     window.open(, '_blank');

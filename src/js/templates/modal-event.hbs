@@ -1,15 +1,9 @@
     <img
-      src="{{this.img}}"
-      alt="{{this.name}}"
-      class="event-circle-img"
-      width="250"
-    />
-    <div class="description-container">
-      <img
         src="{{this.img}}"
         alt="{{this.name}}"
-        class="event-large-img"
+        class="event-modal-img"
       />
+    <div class="description-container">
       <ul class="event-info">
         <li class="event-info-item">
           <h2 class="event-info__header">INFO</h2>
@@ -35,7 +29,8 @@
           <h2 class="event-info__header">WHO</h2>
           <p class="event-info__artist">{{this.name}}</p>
         </li>
-        <li class="event-info-item">
+      </ul>
+              <div class="event-info-item">
           <h2 class="event-info__header header__prices">PRICES</h2>
           <ul class="tickets">
             <li class="ticket-std">
@@ -58,7 +53,7 @@
             {{/with}}</span>
                 </p>
               </div>
-              <button class="buy-button buy-std-btn">BUY TICKETS</button>
+              <a href="{{this.url}}" class="buy-button buy-std-btn" target="_blank">BUY TICKETS</a>
             </li>
             <li class="ticket-vip">
               <div class="ticket-wrap">
@@ -80,10 +75,9 @@
             {{/with}}</span>
                 </p>
               </div>
-              <button class="buy-button buy-vip-btn">BUY TICKETS</button>
+              <a href="{{this.url}}" class="buy-button buy-vip-btn" target="_blank">BUY TICKETS</a>
             </li>
           </ul>
-        </li>
-      </ul>
+        </div>
     </div>
-    <button type="button" class="more-btn">MORE FROM THIS AUTHOR</button>
+    <button type="button" class="more-btn"  data-author="{{this.name}}" id="more">MORE FROM THIS AUTHOR</button>
