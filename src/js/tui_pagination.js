@@ -5,7 +5,7 @@ const container = document.getElementById('pagination');
 
 export class TuiPaginationClass {
   constructor() {
-    this.totalItems = 100;
+    this.totalItems = 0;
     this.itemsPerPage = 16;
     this.page = 1;
     this.paginationPageNumber = 0;

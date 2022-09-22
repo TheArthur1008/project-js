@@ -2,7 +2,7 @@
 
 ul,
 ol {
-    padding: 0;
+  padding: 0;
 }
 
 body,
@@ -19,39 +19,40 @@ figcaption,
 blockquote,
 dl,
 dd {
-    margin: 0;
+  margin: 0;
 }
 
 body {
-    min-height: 100vh;
-    scroll-behavior: smooth;
-    text-rendering: optimizeSpeed;
-    font-family: 'Montserrat', sans-serif;
-    @include font(400, 14px, 20px);
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  font-family: 'Montserrat', sans-serif;
+  @include font(400, 14px, 20px);
 }
 
 ul,
 ol {
-    list-style: none;
+  list-style: none;
 }
 
 a:not([class]) {
-    text-decoration-skip-ink: auto;
+  text-decoration-skip-ink: auto;
 }
-
 
 img {
-    max-width: 100%;
-    display: block;
-    height: auto;
+  max-width: 100%;
+  display: block;
+  height: auto;
 }
-
 
 input,
 button,
 textarea,
 select {
-    font: inherit;
-    cursor: pointer;
+  font: inherit;
+  cursor: pointer;
 }
 
+body.loaded .event-list-item {
+  opacity: 1;
+}

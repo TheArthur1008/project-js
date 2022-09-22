@@ -14,10 +14,23 @@ const eventList = document.querySelector('.event-list');
 const submitFormEl = document.querySelector('.js-form');
 const paginationElement = document.querySelector('.tui-pagination');
 
+window.onload = function () {
+  document.body.className += 'loaded';
+};
 let url;
 
 toggleModal();
 footerToggleModal();
+const smoothScroll = () => {
+  const { top: cardHeight } = document
+    .querySelector('.event-list')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
+};
 
 const defaulValues = events => {
   events.map(el => {
@@ -56,6 +69,7 @@ const randomEvents = async () => {
 
     tuiPagination.itnitializationExem();
     const events = data._embedded.events;
+    defaulValues(events);
     imageSizeFilter(events);
     eventList.insertAdjacentHTML('beforeend', createEventList(events));
   } catch (error) {
@@ -107,17 +121,18 @@ const onSearchIventsSubmit = async event => {
   }
 };
 
-const onLoadMoreRandom = async event => {
+const onLoadMore = async event => {
   const currentNumber = Number(event.target.textContent) - 1;
   if (event.target.textContent === '...') {
     return;
   }
-
+  smoothScroll();
   if (discoveryFetch.keyword !== '') {
     discoveryFetch.page = currentNumber;
     const { data } = await discoveryFetch.fetchEvents();
     console.log(data);
     const events = data._embedded.events;
+    defaulValues(events);
     imageSizeFilter(events);
     eventList.innerHTML = createEventList(events);
     return;
@@ -126,9 +141,10 @@ const onLoadMoreRandom = async event => {
   discoveryFetch.page = currentNumber;
   const { data } = await discoveryFetch.fetchRandomEvents();
   const events = data._embedded.events;
+  defaulValues(events);
   imageSizeFilter(events);
   eventList.innerHTML = createEventList(events);
 };
 
-paginationElement.addEventListener('click', onLoadMoreRandom);
+paginationElement.addEventListener('click', onLoadMore);
 submitFormEl.addEventListener('submit', onSearchIventsSubmit);
