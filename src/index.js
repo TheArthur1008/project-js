@@ -32,7 +32,7 @@ const randomEvents = async () => {
   try {
     const { data } = await discoveryFetch.fetchRandomEvents();
     console.log(data);
-    tuiPagination(data);
+    // tuiPagination(data);
     const events = data._embedded.events;
     imageSizeFilter(events);
     eventList.insertAdjacentHTML('beforeend', createEventList(events));
