@@ -1,6 +1,7 @@
 ////////Приймає відповідь з апішки в першому then
-export function tuiPagination(response) {
-  const { size, totalElements, totalPages, number } = response.data.page;
+export function tuiPagination(responseData) {
+  console.log(responseData);
+  const { size, totalElements, totalPages, number } = responseData.page;
   console.log(size);
   console.log(totalElements);
   console.log(totalPages);
