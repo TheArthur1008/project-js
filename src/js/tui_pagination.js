@@ -4,7 +4,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 import { DiscoveryFetch } from './api.js';
 import createEventList from './templates/event-list.hbs';
 import Notiflix from 'notiflix';
-import { toggleModal } from './modal-opener';
+
 let url;
 
 const container = document.getElementById('pagination');
@@ -22,9 +22,7 @@ const smoothScroll = () => {
       top: cardHeight * 2,
       behavior: 'smooth',
     });
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 const defaulValues = events => {
@@ -71,11 +69,12 @@ export class TuiPaginationClass {
       lastItemClassName: 'tui-last-child',
     };
     setTimeout(() => {
-      document.querySelector(
-        '.tui-last'
-      ).innerHTML = `<span>${this.totalPages}</span>`;
+      try {
+        document.querySelector(
+          '.tui-last'
+        ).innerHTML = `<span>${this.totalPages}</span>`;
+      } catch (error) {}
     }, 5);
-
     const myPagination = new Pagination(container, options);
 
     myPagination.on('beforeMove', async evt => {
@@ -89,17 +88,13 @@ export class TuiPaginationClass {
         if (discoveryFetch.keyword !== '') {
           discoveryFetch.page = this.paginationPageNumber - 1;
           const { data } = await discoveryFetch.fetchEvents();
-          console.log(this.totalPages);
-          if (discoveryFetch.page < this.totalPages - 3) {
-            console.log('dfa');
 
+          if (discoveryFetch.page < this.totalPages - 3) {
             setTimeout(() => {
               document.querySelector(
                 '.tui-last'
               ).innerHTML = `<span>${this.totalPages}</span>`;
             }, 5);
-
-            console.log(data);
           } else {
             document.querySelector('.tui-last').innerHTML = '';
           }
@@ -122,18 +117,13 @@ export class TuiPaginationClass {
         defaulValues(events);
         imageSizeFilter(events);
         eventList.innerHTML = createEventList(events);
-        console.log(discoveryFetch.page);
 
         if (discoveryFetch.page < this.totalPages - 3) {
-          console.log('dfa');
-
           setTimeout(() => {
             document.querySelector(
               '.tui-last'
             ).innerHTML = `<span>${this.totalPages}</span>`;
           }, 5);
-
-          console.log(data);
         } else {
           document.querySelector('.tui-last').innerHTML = '';
         }
@@ -146,7 +136,6 @@ export class TuiPaginationClass {
           document.querySelector('.tui-first').innerHTML = '';
         }
       } catch (error) {
-        console.log(error);
         Notiflix.Notify.failure(
           'Sorry, there are no events matching your search query. Please try again.'
         );

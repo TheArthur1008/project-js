@@ -48,16 +48,14 @@ const imageSizeFilter = event => {
 
 const randomEvents = async () => {
   try {
-    
     const { data } = await discoveryFetch.fetchRandomEvents();
-    console.log(data);
 
     if (data.page.totalElements > 999) {
       tuiPagination.totalItems = 990;
     } else {
       tuiPagination.totalItems = data.page.totalElements;
     }
-     if (data.page.totalPages > 62) {
+    if (data.page.totalPages > 62) {
       tuiPagination.totalPages = 62;
     } else {
       tuiPagination.totalPages = data.page.totalPages;
@@ -67,9 +65,7 @@ const randomEvents = async () => {
     defaulValues(events);
     imageSizeFilter(events);
     eventList.insertAdjacentHTML('beforeend', createEventList(events));
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 randomEvents();
@@ -81,14 +77,14 @@ const onSearchIventsSubmit = async event => {
 
   discoveryFetch.keyword = event.currentTarget.elements.search.value;
   discoveryFetch.countryCode =
-  event.currentTarget.elements.countrySelector.value;
+    event.currentTarget.elements.countrySelector.value;
 
   try {
     if (discoveryFetch.keyword === '') {
       container.innerHTML = '';
       return;
-    } 
-    
+    }
+
     if (discoveryFetch.keyword !== '') {
       const { data } = await discoveryFetch.fetchEvents();
 
@@ -98,16 +94,18 @@ const onSearchIventsSubmit = async event => {
         tuiPagination.totalItems = data.page.totalElements;
       }
       if (data.page.totalPages > 62) {
-      tuiPagination.totalPages = 62;
-    } else {
-      tuiPagination.totalPages = data.page.totalPages;
+        tuiPagination.totalPages = 62;
+      } else {
+        tuiPagination.totalPages = data.page.totalPages;
       }
 
       tuiPagination.itnitializationExem();
 
       if (data.page.totalPages <= 5) {
         document.querySelector('.tui-last-child').innerHTML = '';
-        
+      }
+      if (data.page.totalPages === 1) {
+        document.querySelector('#pagination').innerHTML = '';
       }
 
       const events = data._embedded.events;
@@ -135,6 +133,5 @@ const onSearchIventsSubmit = async event => {
     );
   }
 };
-
 
 submitFormEl.addEventListener('submit', onSearchIventsSubmit);
