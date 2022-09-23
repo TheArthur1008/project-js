@@ -18,3 +18,11 @@ const callback = function (entries, observer) {
 const observer = new IntersectionObserver(callback, options);
 
 observer.observe(targetElForScrollBtn);
+
+scrollUpBtn.addEventListener('click', () => {
+  console.log('hi');
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+});
