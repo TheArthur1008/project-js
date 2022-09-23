@@ -20,21 +20,15 @@
 }
 
 .footer-modal {
-  height: fit-content;
   transform: scale(1);
   transition: transform 250ms;
   counter-reset: none;
-  max-height: 150vh;
   margin: auto;
   max-width: 300px;
 
-  animation: pulsate 1.5s infinite alternate;
-  border: 0.2rem solid #fff;
+  border: 1px solid #bc13fe;
   border-radius: 2rem;
   padding: 0.4em;
-  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
-    0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,12 +41,10 @@
     max-width: 704px;
     padding-bottom: 40px;
     margin: auto;
-    height: 105vh;
   }
 
   @include for-desktop-up {
     max-width: 1034px;
-    height: 100vh;
   }
 }
 
@@ -98,10 +90,7 @@
   border-style: none;
   color: white;
   transition: all ease-in-out 300ms;
-  &:focus,
-  &:hover {
-    color: #2e009a;
-  }
+
 }
 
 .team-form__member {
