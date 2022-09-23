@@ -119,9 +119,7 @@ export function toggleModal() {
     }
 
     tuiPagination.itnitializationExem();
-    if (this.totalPages === 1) {
-      document.querySelector('strong').innerHTML = '1';
-    }
+
     if (data.page.totalPages <= 5 || data.page.totalPages === 0) {
       document.querySelector('.tui-last-child').innerHTML = '';
     }
