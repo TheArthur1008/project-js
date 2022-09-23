@@ -24,7 +24,7 @@ export function toggleModal() {
       if (!el.description) {
         const url = `${el.url}`;
         const descr = document.querySelector('.event-info__description');
-        descr.innerHTML = `Visit <a class="modal-info-link" href="${url}">website</a> for more information`;
+        descr.innerHTML = `Visit <a class="modal-info-link" target="_blank" href="${url}">website</a> for more information`;
       }
     });
   };
@@ -34,7 +34,7 @@ export function toggleModal() {
       if (!el._embedded) {
         const url = `${el.url}`;
         const descr = document.querySelector('.event-info__city');
-        descr.innerHTML = `Visit <a class="modal-info-link" href="${url}">website</a> for more information`;
+        descr.innerHTML = `Visit <a class="modal-info-link" target="_blank" href="${url}">website</a> for more information`;
       }
     });
   };
@@ -82,6 +82,7 @@ export function toggleModal() {
     fetchModalData.id = event.target.dataset.id;
 
     const { data } = await fetchModalData.fetchSelectedEvent();
+console.log(data);
 
     tuiPagination.totalItems = data.page.totalElements;
     tuiPagination.itnitializationExem();

@@ -24,7 +24,6 @@
   transform: scale(1);
   transition: transform 250ms;
   counter-reset: none;
-  max-height: 150vh;
   margin: auto;
   max-width: 300px;
 
@@ -47,12 +46,12 @@
     max-width: 704px;
     padding-bottom: 40px;
     margin: auto;
-    height: 105vh;
+
   }
 
   @include for-desktop-up {
     max-width: 1034px;
-    height: 100vh;
+
   }
 }
 
