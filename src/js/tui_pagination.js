@@ -4,6 +4,7 @@ import { DiscoveryFetch } from './api.js';
 import createEventList from './templates/event-list.hbs';
 import Notiflix from 'notiflix';
 import { toggleModal } from './modal-opener';
+let url;
 
 const container = document.getElementById('pagination');
 const eventList = document.querySelector('.event-list');
@@ -13,17 +14,15 @@ const discoveryFetch = new DiscoveryFetch();
 const smoothScroll = () => {
   try {
     const { top: cardHeight } = document
-    .querySelector('.event-list')
-    .firstElementChild.getBoundingClientRect();
+      .querySelector('.event-list')
+      .firstElementChild.getBoundingClientRect();
 
-  window.scrollBy({
-    top: cardHeight * 2,
-    behavior: 'smooth',
-  });
-    
+    window.scrollBy({
+      top: cardHeight * 2,
+      behavior: 'smooth',
+    });
   } catch (error) {
     console.log(error);
-    
   }
 };
 
@@ -71,7 +70,9 @@ export class TuiPaginationClass {
       lastItemClassName: 'tui-last-child',
     };
     setTimeout(() => {
-      document.querySelector('.tui-last').innerHTML = `<span>${this.totalPages}</span>`;
+      document.querySelector(
+        '.tui-last'
+      ).innerHTML = `<span>${this.totalPages}</span>`;
     }, 5);
 
     const myPagination = new Pagination(container, options);
@@ -88,32 +89,31 @@ export class TuiPaginationClass {
           discoveryFetch.page = this.paginationPageNumber - 1;
           const { data } = await discoveryFetch.fetchEvents();
           console.log(this.totalPages);
-           if (
-          discoveryFetch.page <
-          (this.totalPages - 3)) {
-          console.log("dfa")
-         
-          setTimeout(() => {
-            document.querySelector('.tui-last').innerHTML = `<span>${this.totalPages}</span>`;
-           
-          }, 5);
+          if (discoveryFetch.page < this.totalPages - 3) {
+            console.log('dfa');
 
-          console.log(data);
-        } else {
-          document.querySelector('.tui-last').innerHTML = '';
-           }
-          
+            setTimeout(() => {
+              document.querySelector(
+                '.tui-last'
+              ).innerHTML = `<span>${this.totalPages}</span>`;
+            }, 5);
+
+            console.log(data);
+          } else {
+            document.querySelector('.tui-last').innerHTML = '';
+          }
+
           if (this.totalPages === 1) {
             document.querySelector('strong').innerHTML = '1';
           }
 
-        if (evt.page > 3) {
-          setTimeout(() => {
-            document.querySelector('.tui-first').innerHTML = '<span>1</span>';
-          }, 5);
-        } else {
-          document.querySelector('.tui-first').innerHTML = '';
-        }
+          if (evt.page > 3) {
+            setTimeout(() => {
+              document.querySelector('.tui-first').innerHTML = '<span>1</span>';
+            }, 5);
+          } else {
+            document.querySelector('.tui-first').innerHTML = '';
+          }
           const events = data._embedded.events;
           defaulValues(events);
           imageSizeFilter(events);
@@ -126,16 +126,14 @@ export class TuiPaginationClass {
         imageSizeFilter(events);
         eventList.innerHTML = createEventList(events);
         console.log(discoveryFetch.page);
-       
-        
-        if (
-          discoveryFetch.page <
-          (this.totalPages - 3)) {
-          console.log("dfa")
-         
+
+        if (discoveryFetch.page < this.totalPages - 3) {
+          console.log('dfa');
+
           setTimeout(() => {
-            document.querySelector('.tui-last').innerHTML = `<span>${this.totalPages}</span>`;
-           
+            document.querySelector(
+              '.tui-last'
+            ).innerHTML = `<span>${this.totalPages}</span>`;
           }, 5);
 
           console.log(data);

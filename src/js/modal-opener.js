@@ -5,7 +5,7 @@ import { TuiPaginationClass } from './/tui_pagination';
 import pathToBarcode from '../images/modal/barcode.svg';
 import createEventList from './templates/event-list.hbs';
 import Notiflix from 'notiflix';
-
+let url;
 const tuiPagination = new TuiPaginationClass();
 
 export function toggleModal() {
@@ -82,9 +82,7 @@ export function toggleModal() {
     fetchModalData.id = event.target.dataset.id;
 
     const { data } = await fetchModalData.fetchSelectedEvent();
-console.log(data);
-
-    
+    console.log(data);
 
     const events = data._embedded.events;
 
@@ -110,23 +108,22 @@ console.log(data);
     const { data } = await fetchModalData.fetchEvents();
     console.log(data.page.totalPages);
     if (data.page.totalElements > 999) {
-        tuiPagination.totalItems = 990;
-      } else {
-        tuiPagination.totalItems = data.page.totalElements;
-      }
-      if (data.page.totalPages > 62) {
+      tuiPagination.totalItems = 990;
+    } else {
+      tuiPagination.totalItems = data.page.totalElements;
+    }
+    if (data.page.totalPages > 62) {
       tuiPagination.totalPages = 62;
     } else {
       tuiPagination.totalPages = data.page.totalPages;
-      }
-  
+    }
+
     tuiPagination.itnitializationExem();
-     if (this.totalPages === 1) {
-            document.querySelector('strong').innerHTML = '1';
-          }
+    if (this.totalPages === 1) {
+      document.querySelector('strong').innerHTML = '1';
+    }
     if (data.page.totalPages <= 5 || data.page.totalPages === 0) {
-        document.querySelector('.tui-last-child').innerHTML = '';
-        
+      document.querySelector('.tui-last-child').innerHTML = '';
     }
 
     if (!data._embedded) {
