@@ -1,0 +1,42 @@
+#pagination .tui-page-btn,
+#pagination .tui-ico-ellip {
+  color: var(--secondary-white-color);
+}
+.tui-next-is-ellip {
+  padding-top: 6px;
+}
+#pagination .tui-page-btn {
+  border: none;
+  @include font(400, 16px, 20px);
+  width: 30px;
+  height: 30px;
+  padding-top: 4px;
+}
+
+#pagination .tui-page-btn:hover {
+  background-color: transparent;
+}
+#pagination .tui-is-selected {
+  background-color: transparent;
+  border: 1px solid var(--accent-color);
+  border-radius: 10px 0;
+  color: var(--accent-color);
+}
+#pagination .tui-last {
+  padding-top: 6px;
+}
+#pagination .tui-next,
+#pagination .tui-is-disabled,
+#pagination .tui-prev,
+.tui-ico-first {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

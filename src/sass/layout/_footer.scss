@@ -1,0 +1,23 @@
+.footer-container {
+    text-align: center;
+    color: var(--secondary-grey-color);
+    padding-top: 30px;
+    padding-bottom: 24px;
+    @include for-phone-only {
+        width: 280px;
+    }
+
+}
+.footer-modal-open{
+    padding: 3px 10px;
+    border: 1px solid var(--accent-color);
+    border-radius: 15px 0px;
+    box-shadow:  0 0 0.5rem #bc13fe,
+            0 0 0.1rem #bc13fe, 0 0 0.2rem #bc13fe, inset 0 0 0.3rem #bc13fe;
+            
+}
+.footer-modal-open:hover,
+.footer-modal-open:focus {
+    box-shadow:  0 0 2rem #bc13fe,
+            0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
+}

@@ -1,0 +1,21 @@
+.background-main-footer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: -10;
+  @include for-phone-only {
+    background-color: var(--primary-color);
+  }
+
+  @include for-tablet-only {
+    background-image: url('../images/background-img/background-tablet.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  @include for-desktop-up {
+    background-image: url('../images/background-img/background-desc.png');
+    background-position: center 75px;
+  }
+}

@@ -1,0 +1,79 @@
+    <img
+        src="{{this.img}}"
+        alt="{{this.name}}"
+        class="event-modal-img"
+      />
+    <div class="description-container">
+      <ul class="event-info">
+        <li class="event-info-item">
+          <h2 class="event-info__header">INFO</h2>
+          <p class="event-info__description">
+            {{this.description}}
+          </p>
+        </li>
+        <li class="event-info-item">
+          <h2 class="event-info__header">WHEN</h2>
+          <p class="event-info__date">{{this.dates.start.localDate}}</p>
+          <p class="event-info__time">{{this.dates.start.localTime}}</p>
+        </li>
+        <li class="event-info-item">
+          <h2 class="event-info__header">WHERE</h2>
+          <p class="event-info__city">{{#with this._embedded.venues}}
+            {{[0].city.name}}
+            {{/with}}</p>
+          <p class="event-info__place">{{#with this._embedded.venues}}
+            {{[0].name}}
+            {{/with}}</p>
+        </li>
+        <li class="event-info-item">
+          <h2 class="event-info__header">WHO</h2>
+          <p class="event-info__artist">{{this.name}}</p>
+        </li>
+      </ul>
+              <div class="event-info-item">
+          <h2 class="event-info__header header__prices">PRICES</h2>
+          <ul class="tickets">
+            <li class="ticket-std">
+              <div class="ticket-wrap">
+                <img
+                  src="{{this.svgUrl}}"
+                  alt="barcode"
+                  class="barcode"
+                  width="30"
+                />
+                <p class="ticket-class">
+                  Standart:
+                  <span class="ticket-price">{{#with this.priceRanges}}
+            {{[0].min}}
+            {{/with}}</span>
+                  <span class="ticket-currency">{{#with this.priceRanges}}
+            {{[0].currency}}
+            {{/with}}</span>
+                </p>
+              </div>
+              <a href="{{this.url}}" class="buy-button buy-std-btn" target="_blank">BUY TICKETS</a>
+            </li>
+            <li class="ticket-vip">
+              <div class="ticket-wrap">
+                <img
+                  src="{{this.svgUrl}}"
+                  alt="barcode"
+                  class="barcode"
+                  width="30"
+                />
+                <p class="ticket-class">
+                  VIP:
+                  <span class="ticket-price">{{#with this.priceRanges}}
+            {{[0].max}}
+            {{/with}}</span>
+                  <span class="ticket-currency">{{#with this.priceRanges}}
+            {{[0].currency}}
+            {{/with}}</span>
+                </p>
+              </div>
+              <a href="{{this.url}}" class="buy-button buy-vip-btn" target="_blank">BUY TICKETS</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+    <button type="button" class="more-btn"  data-author="{{this.name}}" id="more">MORE FROM THIS AUTHOR</button>
