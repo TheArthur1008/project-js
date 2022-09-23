@@ -21,41 +21,44 @@
 
 .modal {
     position: absolute;
-    top: 0%;
-    left: calc(50% - 20px);
-    width: 96%;
-    height: fit-content;
+    top: 50%;
+    left: 50%;
+    width: 98%;
+    height: 96%;
     max-width: 280px;
     padding-top: 50px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-bottom: 100px;
-    margin: 20px 20px 100px;
-    overflow: hidden;  
-    transform: translate(-50%, 0%);
+    
+    overflow: auto;  
+    transform: translate(-50%, -50%);
     border-radius: 150px 0px;
     background-color: var(--modal-background-color);
 
     @include for-tablet-up {
         max-width: 704px;
-        left: calc(50% - 32px);
+        height: fit-content;
         border-radius: 300px 0px;
         padding-top: 102px;
-        // padding-left: 102px;
-        padding-bottom: 40px;
-        margin: 160px 32px auto;
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-bottom: 90px;
     }
 
     @include for-desktop-up {
         max-width: 1034px;
         padding-top: 123px;
+        padding-left: 120px;
+        padding-right: 120px;
+        padding-bottom: 100px;
     }
 }
 
 .modal-close-btn{
         position: absolute;
         right: 12px;
-        top: 16px;
+        top: 15px;
         background-color: transparent;
         color: var(--accent-button-color);
         border: none;
@@ -93,15 +96,17 @@
     @include for-tablet-up {
         margin-bottom: 40px;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
         }
 }
 
 .event-info-item{
     display: flex;
     flex-direction: column;
+    text-align: center;
     align-items: center;
     @include for-tablet-up {
+        text-align: left;
             align-items: flex-start;
         }
         
@@ -190,6 +195,7 @@
 }
 .buy-button{
     display: flex;
+    justify-content: center;
     margin-left: auto;
     margin-right: auto;
     padding: 10px 15px;
@@ -220,7 +226,10 @@
     color: var(--accent-button-color);
     @include font (500, 16px, 20px);
 
-    &:hover,
+        @include for-tablet-up {
+            padding: 10px 15px;
+        }
+        &:hover,
         &:focus {
             border-color: rgba(220, 86, 197, 1);
         }

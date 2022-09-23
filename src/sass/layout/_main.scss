@@ -31,13 +31,17 @@
     row-gap: 59px;
   }
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
 
+  100% {
+      opacity: 1;
+  }
+}
 .event-list-item {
-  opacity: 0;
-  -moz-transition: opacity 1.5s;
-  -webkit-transition: opacity 1.5s;
-  -o-transition: opacity 1.5s;
-  transition: opacity 1.5s;
+  animation: fadeIn 600ms ease-in-out both;
 
   max-width: calc((100% - 30px) / 2);
   cursor: pointer;
