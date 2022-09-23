@@ -3,6 +3,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 import { DiscoveryFetch } from './api.js';
 import createEventList from './templates/event-list.hbs';
 import Notiflix from 'notiflix';
+import { toggleModal } from './modal-opener';
 
 const container = document.getElementById('pagination');
 const eventList = document.querySelector('.event-list');
@@ -10,7 +11,8 @@ const submitFormEl = document.querySelector('.js-form');
 
 const discoveryFetch = new DiscoveryFetch();
 const smoothScroll = () => {
-  const { top: cardHeight } = document
+  try {
+    const { top: cardHeight } = document
     .querySelector('.event-list')
     .firstElementChild.getBoundingClientRect();
 
@@ -18,6 +20,11 @@ const smoothScroll = () => {
     top: cardHeight * 2,
     behavior: 'smooth',
   });
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
 };
 
 const defaulValues = events => {
@@ -94,7 +101,11 @@ export class TuiPaginationClass {
           console.log(data);
         } else {
           document.querySelector('.tui-last').innerHTML = '';
-        }
+           }
+          
+          if (this.totalPages === 1) {
+            document.querySelector('strong').innerHTML = '1';
+          }
 
         if (evt.page > 3) {
           setTimeout(() => {

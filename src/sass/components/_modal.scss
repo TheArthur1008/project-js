@@ -37,21 +37,29 @@
     background-color: var(--modal-background-color);
 
     @include for-tablet-up {
-        max-width: 704px;
-        height: fit-content;
+        height: 96%;
+        width: 96%;
+
+        max-height: 845px;
+
+        max-width: 600px;
+        
         border-radius: 300px 0px;
-        padding-top: 102px;
-        padding-left: 100px;
-        padding-right: 100px;
-        padding-bottom: 90px;
+        padding-top: 75px;
+        padding-left: 55px;
+        padding-right: 55px;
+        padding-bottom: 75px;
     }
 
     @include for-desktop-up {
-        max-width: 1034px;
-        padding-top: 123px;
-        padding-left: 120px;
-        padding-right: 120px;
-        padding-bottom: 100px;
+        width: 96%;
+        height: 96%;
+        max-width: 700px;
+        max-height: 1010px;
+        padding-top: 90px;
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-bottom: 80px;
     }
 }
 
@@ -86,7 +94,7 @@
         }
     
         @include for-desktop-up {
-            width: 800px;
+            width: 100%;
             border-radius: 220px 0px;
         }
     
