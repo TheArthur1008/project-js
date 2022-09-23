@@ -61,12 +61,12 @@ const randomEvents = async () => {
   try {
     const { data } = await discoveryFetch.fetchRandomEvents();
     console.log(data);
+
     if (data.page.totalElements > 999) {
       tuiPagination.totalItems = 990;
     } else {
       tuiPagination.totalItems = data.page.totalElements;
     }
-
     tuiPagination.itnitializationExem();
     const events = data._embedded.events;
     defaulValues(events);
@@ -92,7 +92,11 @@ const onSearchIventsSubmit = async event => {
     if (discoveryFetch.keyword !== '') {
       const { data } = await discoveryFetch.fetchEvents();
 
-      tuiPagination.totalItems = data.page.totalElements;
+      if (data.page.totalElements > 999) {
+        tuiPagination.totalItems = 990;
+      } else {
+        tuiPagination.totalItems = data.page.totalElements;
+      }
       tuiPagination.itnitializationExem();
 
       const events = data._embedded.events;
@@ -121,30 +125,42 @@ const onSearchIventsSubmit = async event => {
   }
 };
 
-const onLoadMore = async event => {
-  const currentNumber = Number(event.target.textContent) - 1;
-  if (event.target.textContent === '...') {
-    return;
-  }
-  smoothScroll();
-  if (discoveryFetch.keyword !== '') {
-    discoveryFetch.page = currentNumber;
-    const { data } = await discoveryFetch.fetchEvents();
-    console.log(data);
-    const events = data._embedded.events;
-    defaulValues(events);
-    imageSizeFilter(events);
-    eventList.innerHTML = createEventList(events);
-    return;
-  }
+// const onLoadMore = async event => {
+//   const currentNumber = Number(event.target.textContent) - 1;
+//   discoveryFetch.page = currentNumber;
+//   smoothScroll();
+//   try {
+//     // setTimeout(() => {
+//     if (event.target.textContent === '...') {
+//       // console.log(tuiPagination.getCurrentPage());
+//       // discoveryFetch.page = tuiPagination.paginationPageNumber;
+//       // console.log(tuiPagination.paginationPageNumber);
+//       return;
+//     }
+//     // }, 0);
+//     if (discoveryFetch.keyword !== '') {
+//       discoveryFetch.page = currentNumber;
+//       const { data } = await discoveryFetch.fetchEvents();
+//       console.log(data);
+//       const events = data._embedded.events;
+//       defaulValues(events);
+//       imageSizeFilter(events);
+//       eventList.innerHTML = createEventList(events);
+//       return;
+//     }
 
-  discoveryFetch.page = currentNumber;
-  const { data } = await discoveryFetch.fetchRandomEvents();
-  const events = data._embedded.events;
-  defaulValues(events);
-  imageSizeFilter(events);
-  eventList.innerHTML = createEventList(events);
-};
+//     const { data } = await discoveryFetch.fetchRandomEvents();
 
-paginationElement.addEventListener('click', onLoadMore);
+//     const events = data._embedded.events;
+//     defaulValues(events);
+//     imageSizeFilter(events);
+//     eventList.innerHTML = createEventList(events);
+//   } catch (error) {
+//     Notiflix.Notify.failure(
+//       'Sorry, there are no events matching your search query. Please try again.'
+//     );
+//   }
+// };
+
+// paginationElement.addEventListener('click', onLoadMore);
 submitFormEl.addEventListener('submit', onSearchIventsSubmit);
