@@ -12,8 +12,6 @@ const tuiPagination = new TuiPaginationClass();
 
 const eventList = document.querySelector('.event-list');
 const submitFormEl = document.querySelector('.js-form');
-const paginationElement = document.querySelector('.tui-pagination');
-
 window.onload = function () {
   document.body.className += 'loaded';
 };
@@ -67,6 +65,11 @@ const randomEvents = async () => {
     } else {
       tuiPagination.totalItems = data.page.totalElements;
     }
+     if (data.page.totalPages > 62) {
+      tuiPagination.totalPages = 62;
+    } else {
+      tuiPagination.totalPages = data.page.totalPages;
+    }
     tuiPagination.itnitializationExem();
     const events = data._embedded.events;
     defaulValues(events);
@@ -97,7 +100,20 @@ const onSearchIventsSubmit = async event => {
       } else {
         tuiPagination.totalItems = data.page.totalElements;
       }
+      if (data.page.totalPages > 62) {
+      tuiPagination.totalPages = 62;
+    } else {
+      tuiPagination.totalPages = data.page.totalPages;
+      }
+
+
       tuiPagination.itnitializationExem();
+
+      if (data.page.totalPages <= 5) {
+        document.querySelector('.tui-last-child').innerHTML = '';
+        // document.querySelector('.tui-last').innerHTML = '';
+        console.log('ertw')
+      }
 
       const events = data._embedded.events;
       defaulValues(events);
@@ -125,42 +141,5 @@ const onSearchIventsSubmit = async event => {
   }
 };
 
-// const onLoadMore = async event => {
-//   const currentNumber = Number(event.target.textContent) - 1;
-//   discoveryFetch.page = currentNumber;
-//   smoothScroll();
-//   try {
-//     // setTimeout(() => {
-//     if (event.target.textContent === '...') {
-//       // console.log(tuiPagination.getCurrentPage());
-//       // discoveryFetch.page = tuiPagination.paginationPageNumber;
-//       // console.log(tuiPagination.paginationPageNumber);
-//       return;
-//     }
-//     // }, 0);
-//     if (discoveryFetch.keyword !== '') {
-//       discoveryFetch.page = currentNumber;
-//       const { data } = await discoveryFetch.fetchEvents();
-//       console.log(data);
-//       const events = data._embedded.events;
-//       defaulValues(events);
-//       imageSizeFilter(events);
-//       eventList.innerHTML = createEventList(events);
-//       return;
-//     }
 
-//     const { data } = await discoveryFetch.fetchRandomEvents();
-
-//     const events = data._embedded.events;
-//     defaulValues(events);
-//     imageSizeFilter(events);
-//     eventList.innerHTML = createEventList(events);
-//   } catch (error) {
-//     Notiflix.Notify.failure(
-//       'Sorry, there are no events matching your search query. Please try again.'
-//     );
-//   }
-// };
-
-// paginationElement.addEventListener('click', onLoadMore);
 submitFormEl.addEventListener('submit', onSearchIventsSubmit);

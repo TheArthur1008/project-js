@@ -51,6 +51,7 @@ export class TuiPaginationClass {
     this.itemsPerPage = 16;
     this.page = 1;
     this.paginationPageNumber = 0;
+    this.totalPages = 0;
   }
   itnitializationExem() {
     const options = {
@@ -63,9 +64,7 @@ export class TuiPaginationClass {
       lastItemClassName: 'tui-last-child',
     };
     setTimeout(() => {
-      document.querySelector('.tui-last').innerHTML = `<span>${Math.ceil(
-        this.totalItems / this.itemsPerPage
-      )}</span>`;
+      document.querySelector('.tui-last').innerHTML = `<span>${this.totalPages}</span>`;
     }, 5);
 
     const myPagination = new Pagination(container, options);
@@ -81,7 +80,29 @@ export class TuiPaginationClass {
         if (discoveryFetch.keyword !== '') {
           discoveryFetch.page = this.paginationPageNumber - 1;
           const { data } = await discoveryFetch.fetchEvents();
+          console.log(this.totalPages);
+           if (
+          discoveryFetch.page <
+          (this.totalPages - 3)) {
+          console.log("dfa")
+         
+          setTimeout(() => {
+            document.querySelector('.tui-last').innerHTML = `<span>${this.totalPages}</span>`;
+           
+          }, 5);
+
           console.log(data);
+        } else {
+          document.querySelector('.tui-last').innerHTML = '';
+        }
+
+        if (evt.page > 3) {
+          setTimeout(() => {
+            document.querySelector('.tui-first').innerHTML = '<span>1</span>';
+          }, 5);
+        } else {
+          document.querySelector('.tui-first').innerHTML = '';
+        }
           const events = data._embedded.events;
           defaulValues(events);
           imageSizeFilter(events);
@@ -93,15 +114,20 @@ export class TuiPaginationClass {
         defaulValues(events);
         imageSizeFilter(events);
         eventList.innerHTML = createEventList(events);
+        console.log(discoveryFetch.page);
+       
+        
         if (
-          this.paginationPageNumber <
-          Math.ceil(this.totalItems / this.itemsPerPage) - 2
-        ) {
+          discoveryFetch.page <
+          (this.totalPages - 3)) {
+          console.log("dfa")
+         
           setTimeout(() => {
-            document.querySelector('.tui-last').innerHTML = `<span>${Math.ceil(
-              this.totalItems / this.itemsPerPage
-            )}</span>`;
+            document.querySelector('.tui-last').innerHTML = `<span>${this.totalPages}</span>`;
+           
           }, 5);
+
+          console.log(data);
         } else {
           document.querySelector('.tui-last').innerHTML = '';
         }
