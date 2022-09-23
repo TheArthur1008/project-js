@@ -24,7 +24,6 @@
   transform: scale(1);
   transition: transform 250ms;
   counter-reset: none;
-  max-height: 150vh;
   margin: auto;
   max-width: 300px;
 
@@ -41,18 +40,18 @@
 
   transform: translate(-50%, 0%);
   border-radius: 120px 0px;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.9);
 
   @include for-tablet-up {
     max-width: 704px;
     padding-bottom: 40px;
     margin: auto;
-    height: 105vh;
+
   }
 
   @include for-desktop-up {
     max-width: 1034px;
-    height: 100vh;
+
   }
 }
 
