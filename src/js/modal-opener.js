@@ -84,8 +84,7 @@ export function toggleModal() {
     const { data } = await fetchModalData.fetchSelectedEvent();
 console.log(data);
 
-    tuiPagination.totalItems = data.page.totalElements;
-    tuiPagination.itnitializationExem();
+    
 
     const events = data._embedded.events;
 
@@ -109,6 +108,27 @@ console.log(data);
     fetchModalData.keyword = e.target.dataset.author;
 
     const { data } = await fetchModalData.fetchEvents();
+    console.log(data.page.totalPages);
+    if (data.page.totalElements > 999) {
+        tuiPagination.totalItems = 990;
+      } else {
+        tuiPagination.totalItems = data.page.totalElements;
+      }
+      if (data.page.totalPages > 62) {
+      tuiPagination.totalPages = 62;
+    } else {
+      tuiPagination.totalPages = data.page.totalPages;
+      }
+  
+    tuiPagination.itnitializationExem();
+     if (this.totalPages === 1) {
+            document.querySelector('strong').innerHTML = '1';
+          }
+    if (data.page.totalPages <= 5 || data.page.totalPages === 0) {
+        document.querySelector('.tui-last-child').innerHTML = '';
+        
+    }
+
     if (!data._embedded) {
       Notiflix.Notify.failure('There are no events by this artist');
       return;
