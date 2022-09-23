@@ -112,7 +112,8 @@ const onSearchIventsSubmit = async event => {
       defaulValues(events);
       imageSizeFilter(events);
 
-      if (data.page.totalElements === null) {
+      if (data.page.totalElements === null && data.page.totalPages === null) {
+        document.querySelector('#pagination').innerHTML = '';
         Notiflix.Notify.failure(
           'Sorry, there are no events matching your search query. Please try again.'
         );
@@ -128,6 +129,7 @@ const onSearchIventsSubmit = async event => {
       );
     }
   } catch (error) {
+    document.querySelector('#pagination').innerHTML = '';
     Notiflix.Notify.failure(
       'Sorry, there are no events matching your search query. Please try again.'
     );
