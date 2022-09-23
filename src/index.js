@@ -3,22 +3,34 @@ import './js/scroll-up-btn';
 import { toggleModal } from './js/modal-opener.js';
 import { DiscoveryFetch } from './js/api.js';
 import { footerToggleModal } from './js/footer-modal.js';
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
 import Notiflix from 'notiflix';
 import createEventList from './js/templates/event-list.hbs';
-import './js/tui_pagination.js';
+import { TuiPaginationClass } from './js/tui_pagination';
 
 const discoveryFetch = new DiscoveryFetch();
+const tuiPagination = new TuiPaginationClass();
 
 const eventList = document.querySelector('.event-list');
 const submitFormEl = document.querySelector('.js-form');
-const paginationBtnEl = document.querySelector('#pagination');
+const paginationElement = document.querySelector('.tui-pagination');
 
+window.onload = function () {
+  document.body.className += 'loaded';
+};
 let url;
 
 toggleModal();
 footerToggleModal();
+const smoothScroll = () => {
+  const { top: cardHeight } = document
+    .querySelector('.event-list')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
+};
 
 const defaulValues = events => {
   events.map(el => {
@@ -48,6 +60,14 @@ const imageSizeFilter = event => {
 const randomEvents = async () => {
   try {
     const { data } = await discoveryFetch.fetchRandomEvents();
+    console.log(data);
+
+    if (data.page.totalElements > 999) {
+      tuiPagination.totalItems = 990;
+    } else {
+      tuiPagination.totalItems = data.page.totalElements;
+    }
+    tuiPagination.itnitializationExem();
     const events = data._embedded.events;
     defaulValues(events);
     imageSizeFilter(events);
@@ -71,6 +91,13 @@ const onSearchIventsSubmit = async event => {
   try {
     if (discoveryFetch.keyword !== '') {
       const { data } = await discoveryFetch.fetchEvents();
+
+      if (data.page.totalElements > 999) {
+        tuiPagination.totalItems = 990;
+      } else {
+        tuiPagination.totalItems = data.page.totalElements;
+      }
+      tuiPagination.itnitializationExem();
 
       const events = data._embedded.events;
       defaulValues(events);
@@ -98,9 +125,42 @@ const onSearchIventsSubmit = async event => {
   }
 };
 
-const onLoadMore = () => {
-  myPagination.on();
-};
+// const onLoadMore = async event => {
+//   const currentNumber = Number(event.target.textContent) - 1;
+//   discoveryFetch.page = currentNumber;
+//   smoothScroll();
+//   try {
+//     // setTimeout(() => {
+//     if (event.target.textContent === '...') {
+//       // console.log(tuiPagination.getCurrentPage());
+//       // discoveryFetch.page = tuiPagination.paginationPageNumber;
+//       // console.log(tuiPagination.paginationPageNumber);
+//       return;
+//     }
+//     // }, 0);
+//     if (discoveryFetch.keyword !== '') {
+//       discoveryFetch.page = currentNumber;
+//       const { data } = await discoveryFetch.fetchEvents();
+//       console.log(data);
+//       const events = data._embedded.events;
+//       defaulValues(events);
+//       imageSizeFilter(events);
+//       eventList.innerHTML = createEventList(events);
+//       return;
+//     }
 
+//     const { data } = await discoveryFetch.fetchRandomEvents();
+
+//     const events = data._embedded.events;
+//     defaulValues(events);
+//     imageSizeFilter(events);
+//     eventList.innerHTML = createEventList(events);
+//   } catch (error) {
+//     Notiflix.Notify.failure(
+//       'Sorry, there are no events matching your search query. Please try again.'
+//     );
+//   }
+// };
+
+// paginationElement.addEventListener('click', onLoadMore);
 submitFormEl.addEventListener('submit', onSearchIventsSubmit);
-paginationBtnEl.addEventListener('click', onLoadMore);

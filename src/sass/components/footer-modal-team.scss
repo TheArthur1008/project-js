@@ -1,119 +1,113 @@
-.footer-backdrop.footer-is-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+.footer-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: rgba(32, 13, 29, 0.6);
+  transition: opacity 300ms linear, visibility 300ms linear;
+  display: flex;
+  overflow-y: auto;
 }
 
-.footer-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(32, 13, 29, 0.6);
-    transition: opacity 500ms linear, visibility 500ms linear;
-    display: flex;
-    overflow-y: auto;
-
+.footer-is-hidden {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .footer-modal {
-    height: fit-content;
-    transform: scale(1);
-    transition: transform 250ms;
-    counter-reset: none;
-    max-height: 150vh;
-    margin: auto;
-    max-width: 300px;
-    
-    
-  animation: pulsate 1.5s infinite alternate;  
+  height: fit-content;
+  transform: scale(1);
+  transition: transform 250ms;
+  counter-reset: none;
+  margin: auto;
+  max-width: 300px;
+
+  animation: pulsate 1.5s infinite alternate;
   border: 0.2rem solid #fff;
   border-radius: 2rem;
   padding: 0.4em;
-  box-shadow: 0 0 .2rem #fff,
-            0 0 .2rem #fff,
-            0 0 2rem #bc13fe,
-            0 0 0.8rem #bc13fe,
-            0 0 2.8rem #bc13fe,
-            inset 0 0 1.3rem #bc13fe;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
+    0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    transform: translate(-50%, 0%);
-    border-radius: 120px 0px;
-    background-color: rgba(255, 255, 255, 0.75);
-    
-    @include for-tablet-up {
-        max-width: 704px;
-        padding-bottom: 40px;
-        margin: auto;
-        height: 105vh;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    @include for-desktop-up {
-        max-width: 1034px;
-        height: 100vh;
-    }
+  transform: translate(-50%, 0%);
+  border-radius: 120px 0px;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  @include for-tablet-up {
+    max-width: 704px;
+    padding-bottom: 40px;
+    margin: auto;
+
+  }
+
+  @include for-desktop-up {
+    max-width: 1034px;
+
+  }
 }
 
 .footer-modal-close-btn {
-    position: absolute;
-    right: 20px;
-    top: 16px;
-    background-color: transparent;
-    color: var(--accent-button-color);
-    border: none;
-    transition: all ease-in-out 300ms;
-    &:hover,
-        &:focus {
-            scale: 1.1;
-            color: #2E009A;
-        }
+  position: absolute;
+  right: 20px;
+  top: 16px;
+  background-color: transparent;
+  color: var(--accent-button-color);
+  border: none;
+  transition: all ease-in-out 300ms;
+  &:hover,
+  &:focus {
+    scale: 1.1;
+    color: #2e009a;
+  }
 }
 
-
 .team-name {
-    text-align: center;
-    color: var(--primary-color);
-    margin-bottom: 5px;
-    margin-top: 30px;
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+  margin-top: 30px;
 }
 
 .team-form__member {
-    border: 1px solid var(--primary-color);
-    color: black;
+  border: 1px solid var(--primary-color);
+  color: black;
 }
 
 .team-form__gitHub {
-    color: var(--accent-button-color);
-    text-decoration: none;
-    transition: all ease-in-out 300ms;
-    &:focus,
-    &:hover {
-        color: #2E009A;
-    }
+  color: var(--accent-button-color);
+  text-decoration: none;
+  transition: all ease-in-out 300ms;
+  &:focus,
+  &:hover {
+    color: #2e009a;
+  }
 }
 
 .footer-modal-open {
-    background-color: transparent;
-    border-style: none;
-    color: white;
-    transition: all ease-in-out 300ms;
-        &:focus,
-    &:hover {
-        color: #2E009A;
-    }
+  background-color: transparent;
+  border-style: none;
+  color: white;
+  transition: all ease-in-out 300ms;
+  &:focus,
+  &:hover {
+    color: #2e009a;
+  }
 }
 
 .team-form__member {
-    border-radius: 2px;
-    border-style: none;
+  border-radius: 2px;
+  border-style: none;
 }
 
 .last-fieldset {
-    margin-bottom: 70px;
+  margin-bottom: 70px;
 }
