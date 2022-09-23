@@ -316,6 +316,10 @@
 
 .scroll-up-btn {
   position: fixed;
+  @include for-phone-responsive {
+    bottom: 170px;
+    right: 10px;
+  }
   right: 50px;
   bottom: 90px;
   z-index: 30;
