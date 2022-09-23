@@ -1,3 +1,4 @@
+'use strict';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { DiscoveryFetch } from './api.js';
@@ -101,10 +102,6 @@ export class TuiPaginationClass {
             console.log(data);
           } else {
             document.querySelector('.tui-last').innerHTML = '';
-          }
-
-          if (this.totalPages === 1) {
-            document.querySelector('strong').innerHTML = '1';
           }
 
           if (evt.page > 3) {

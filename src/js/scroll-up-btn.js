@@ -1,3 +1,4 @@
+'use strict';
 const targetElForScrollBtn = document.querySelector('.custom-select');
 const scrollUpBtn = document.querySelector('.scroll-up-btn');
 
