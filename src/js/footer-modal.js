@@ -1,23 +1,21 @@
-'use strict'
+'use strict';
 
-import { toggleModal } from "./modal-opener";
-
-export function footerToggleModal () {
+export function footerToggleModal() {
   const backdropEl = document.querySelector('.footer-backdrop');
 
-(() => {
+  (() => {
     const refs = {
-      openModalBtn: document.querySelector(".footer-modal-open"),
-      closeModalBtn: document.querySelector(".footer-modal-close-btn"),
-      modal: document.querySelector(".footer-backdrop"),
+      openModalBtn: document.querySelector('.footer-modal-open'),
+      closeModalBtn: document.querySelector('.footer-modal-close-btn'),
+      modal: document.querySelector('.footer-backdrop'),
     };
-  
-    refs.openModalBtn.addEventListener("click", footerToggleModal);
-    refs.closeModalBtn.addEventListener("click", footerToggleModal);
-  
+
+    refs.openModalBtn.addEventListener('click', footerToggleModal);
+    refs.closeModalBtn.addEventListener('click', footerToggleModal);
+
     function footerToggleModal() {
-      refs.modal.classList.toggle("footer-is-hidden");
-    };
+      refs.modal.classList.toggle('footer-is-hidden');
+    }
 
     const onEscBtnPress = event => {
       if (event.code === 'Escape') {
@@ -32,11 +30,10 @@ export function footerToggleModal () {
 
     backdropEl.addEventListener('click', event => {
       const { target, currentTarget } = event;
-      
-      if(target === currentTarget) {
+
+      if (target === currentTarget) {
         footerToggleModal();
       }
-    })
-    
+    });
   })();
 }

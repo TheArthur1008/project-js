@@ -23,7 +23,7 @@ footerToggleModal();
 
 const defaulValues = events => {
   events.map(el => {
-    if (!el._embedded || !el._embedded.venues[0].name) {
+    if (!el._embedded || !el._embedded.venues[0].name || !el._embedded.venues) {
       el._embedded = {
         venues: [
           {
