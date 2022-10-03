@@ -81,4 +81,34 @@ function closeAllSelect(elmnt) {
 }
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
+
 document.addEventListener('click', closeAllSelect);
+
+//!============= switch thems ====
+
+const header = document.querySelector('.header');
+const mainBg = document.querySelector('.background-main-footer');
+
+//*==================== switcher custom ========
+const toggle = document.querySelector('.toggle');
+let root = document.documentElement;
+
+toggle.addEventListener('change', e => {
+  if (e.target.checked) {
+    document.documentElement.style.setProperty('--accent-color', '#2F2ADB');
+    document.documentElement.style.setProperty(
+      '--secondary-white-color',
+      '#5c5c5c'
+    );
+    header.classList.add('light');
+    mainBg.classList.add('light');
+  } else {
+    document.documentElement.style.setProperty('--accent-color', '#DC56C5');
+    document.documentElement.style.setProperty(
+      '--secondary-white-color',
+      '#FFFFFF'
+    );
+    header.classList.remove('light');
+    mainBg.classList.remove('light');
+  }
+});

@@ -1,76 +1,94 @@
-<header class="header">
-  <div class="container container--header">
-    <div class="logo-bg"></div>
-    <a href="./index.html">
-      <img src="./images/header/logo-symbols.svg" alt="" class="logo"
-    /></a>
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <title>Test</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container container--header">
+        <div class="logo-bg"></div>
+        <a href="./index.html">
+          <img src="./images/header/logo-symbols.svg" alt="" class="logo" />
+        </a>
 
-    <h1 class="header-title">FIND BEST EVENTS AROUND THE WORLD</h1>
+        <h1 class="header-title">FIND BEST EVENTS AROUND THE WORLD</h1>
 
-    <form class="header-search-form js-form">
-      <div class="form-search">
-        <input
-          type="text"
-          name="search"
-          class="search form-input"
-          placeholder="Start searching"
-        />
-        <button type="submit" class="search-submit-btn">
-          <span class="search-icon"></span>
-        </button>
+        <form class="header-search-form js-form">
+          <div class="form-search">
+            <input
+              type="text"
+              name="search"
+              class="search form-input"
+              placeholder="Start searching"
+            />
+            <button type="submit" class="search-submit-btn">
+              <span class="search-icon"></span>
+            </button>
+          </div>
+
+          <div class="custom-select">
+            <select name="countrySelector" class="country-selector form-input">
+              <option value="">Choose country</option>
+              <option selected value="">Choose country</option>
+              <option value="AR">Argentina</option>
+              <option value="AU">Australia</option>
+              <option value="AT">Austria</option>
+              <option value="BE">Belgium</option>
+              <option value="CA">Canada</option>
+              <option value="HR">Croatia</option>
+              <option value="CY">Cyprus</option>
+              <option value="CZ">Czech Republic</option>
+              <option value="DK">Denmark</option>
+              <option value="EE">Estonia</option>
+              <option value="FI">Finland</option>
+              <option value="FR">France</option>
+              <option value="GE">Georgia</option>
+              <option value="DE">Germany</option>
+              <option value="GR">Greece</option>
+              <option value="HU">Hungary</option>
+              <option value="IS">Iceland</option>
+              <option value="IE">Ireland</option>
+              <option value="IL">Israel</option>
+              <option value="IT">Italy</option>
+              <option value="JP">Japan</option>
+              <option value="LV">Latvia</option>
+              <option value="LT">Lithuania</option>
+              <option value="LU">Luxembourg</option>
+              <option value="MT">Malta</option>
+              <option value="MC">Monaco</option>
+              <option value="ME">Montenegro</option>
+              <option value="NL">Netherlands</option>
+              <option value="NZ">New Zealand</option>
+              <option value="NO">Norway</option>
+              <option value="PE">Peru</option>
+              <option value="PL">Poland</option>
+              <option value="PT">Portugal</option>
+              <option value="SK">Slovakia</option>
+              <option value="SI">Slovenia</option>
+              <option value="ES">Spain</option>
+              <option value="SZ">Swaziland</option>
+              <option value="SE">Sweden</option>
+              <option value="CH">Switzerland</option>
+              <option value="TR">Turkey</option>
+              <option value="UA">Ukraine</option>
+              <option value="GB">United Kingdom</option>
+              <option value="US">United States</option>
+            </select>
+          </div>
+        </form>
+
+        <div class="toggle">
+          <input type="checkbox" id="toggle" />
+          <label for="toggle"></label>
+        </div>
+        <!-- 
+        <div class="toggle">
+          <input type="checkbox" id="toggle" />
+          <label for="toggle" />
+        </div> -->
+
+        <div class="scroll-up-btn is-hidden"></div>
       </div>
-
-      <div class="custom-select">
-        <select name="countrySelector" class="country-selector form-input">
-          <option value="">Choose country</option>
-          <option selected value="">Choose country</option>
-          <option value="AR">Argentina</option>
-          <option value="AU">Australia</option>
-          <option value="AT">Austria</option>
-          <option value="BE">Belgium</option>
-          <option value="CA">Canada</option>
-          <option value="HR">Croatia</option>
-          <option value="CY">Cyprus</option>
-          <option value="CZ">Czech Republic</option>
-          <option value="DK">Denmark</option>
-          <option value="EE">Estonia</option>
-          <option value="FI">Finland</option>
-          <option value="FR">France</option>
-          <option value="GE">Georgia</option>
-          <option value="DE">Germany</option>
-          <option value="GR">Greece</option>
-          <option value="HU">Hungary</option>
-          <option value="IS">Iceland</option>
-          <option value="IE">Ireland</option>
-          <option value="IL">Israel</option>
-          <option value="IT">Italy</option>
-          <option value="JP">Japan</option>
-          <option value="LV">Latvia</option>
-          <option value="LT">Lithuania</option>
-          <option value="LU">Luxembourg</option>
-          <option value="MT">Malta</option>
-          <option value="MC">Monaco</option>
-          <option value="ME">Montenegro</option>
-          <option value="NL">Netherlands</option>
-          <option value="NZ">New Zealand</option>
-          <option value="NO">Norway</option>
-          <option value="PE">Peru</option>
-          <option value="PL">Poland</option>
-          <option value="PT">Portugal</option>
-          <option value="SK">Slovakia</option>
-          <option value="SI">Slovenia</option>
-          <option value="ES">Spain</option>
-          <option value="SZ">Swaziland</option>
-          <option value="SE">Sweden</option>
-          <option value="CH">Switzerland</option>
-          <option value="TR">Turkey</option>
-          <option value="UA">Ukraine</option>
-          <option value="GB">United Kingdom</option>
-          <option value="US">United States</option>
-        </select>
-      </div>
-    </form>
-  </div>
-
-  <div class="scroll-up-btn is-hidden"></div>
-</header>
+    </header>
+  </body>
+</html>

@@ -37,7 +37,7 @@
   }
 
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }
 .event-list-item {
@@ -46,6 +46,8 @@
   max-width: calc((100% - 30px) / 2);
   cursor: pointer;
 
+  transition: scale 250ms;
+
   @include for-tablet-up {
     max-width: calc((100% - 129px) / 4);
   }
@@ -53,6 +55,10 @@
   @include for-desktop-up {
     max-width: calc((100% - 159px) / 4);
   }
+}
+
+.event-list-item:hover {
+  scale: 1.05;
 }
 
 .event-link {

@@ -9,13 +9,21 @@
   }
 
   @include for-tablet-only {
-    background-image: url('../images/background-img/background-tablet.png');
+    background-image: url('../images/background-img/background-tablet.jpg');
     background-repeat: no-repeat;
     background-size: cover;
   }
 
   @include for-desktop-up {
-    background-image: url('../images/background-img/background-desc.png');
+    background-image: url('../images/background-img/background-desc.jpg');
     background-position: center 75px;
   }
+}
+
+.background-main-footer.light {
+  background-image: linear-gradient(
+      rgba(185, 180, 180, 0.5),
+      rgba(185, 180, 180, 0.5)
+    ),
+    url('../images/background-img/gray-background-desc.jpg');
 }
