@@ -1,35 +1,35 @@
-    <img
-        src="{{this.img}}"
-        alt="{{this.name}}"
-        class="event-modal-img"
-      />
-    <div class="description-container">
-      <ul class="event-info">
-        <li class="event-info-item">
-          <h2 class="event-info__header">INFO</h2>
-          <p class="event-info__description">
-            {{this.description}}
-          </p>
-        </li>
-        <li class="event-info-item">
-          <h2 class="event-info__header">WHEN</h2>
-          <p class="event-info__date">{{this.dates.start.localDate}}</p>
-          <p class="event-info__time">{{this.dates.start.localTime}}</p>
-        </li>
-        <li class="event-info-item">
-          <h2 class="event-info__header">WHERE</h2>
-          <p class="event-info__city">{{#with this._embedded.venues}}
-            {{[0].city.name}}
-            {{/with}}</p>
-          <p class="event-info__place">{{#with this._embedded.venues}}
-            {{[0].name}}
-            {{/with}}</p>
-        </li>
+<div class="img-container">
+     <div class="inner-wrapper">
+      <img src="{{this.img}}" alt="{{this.name}}" class="event-modal-img" />
+    <button type="button" class="more-btn" data-author="{{this.name}}" id="more">MORE FROM THIS AUTHOR</button>
+    </div>
+      <ul>
         <li class="event-info-item">
           <h2 class="event-info__header">WHO</h2>
           <p class="event-info__artist">{{this.name}}</p>
         </li>
+<li class="event-info-item">
+  <h2 class="event-info__header">WHEN</h2>
+  <p class="event-info__date">{{this.dates.start.localDate}}</p>
+  <p class="event-info__time">{{this.dates.start.localTime}}</p>
+</li>
+<li class="event-info-item">
+  <h2 class="event-info__header">WHERE</h2>
+  <p class="event-info__city">{{#with this._embedded.venues}}
+    {{[0].city.name}}
+    {{/with}}</p>
+  <p class="event-info__place">{{#with this._embedded.venues}}
+    {{[0].name}}
+    {{/with}}</p>
+</li>
       </ul>
+</div>
+    <div class="description-container">
+          <h2 class="event-info__header">INFO</h2>
+          <p class="event-info__description">
+            {{this.description}}
+          </p> </div>
+          
               <div class="event-info-item">
           <h2 class="event-info__header header__prices">PRICES</h2>
           <ul class="tickets">
@@ -75,5 +75,5 @@
             </li>
           </ul>
         </div>
-    </div>
-    <button type="button" class="more-btn"  data-author="{{this.name}}" id="more">MORE FROM THIS AUTHOR</button>
+  
+    

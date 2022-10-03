@@ -80,12 +80,12 @@ const onSearchIventsSubmit = async event => {
     event.currentTarget.elements.countrySelector.value;
 
   try {
-    if (discoveryFetch.keyword === '') {
+    if (discoveryFetch.keyword === '' && discoveryFetch.countryCode === '') {
       container.innerHTML = '';
       return;
     }
 
-    if (discoveryFetch.keyword !== '') {
+    if (discoveryFetch.keyword !== '' || discoveryFetch.countryCode !== '') {
       const { data } = await discoveryFetch.fetchEvents();
 
       if (data.page.totalElements > 999) {

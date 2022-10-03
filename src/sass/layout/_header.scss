@@ -194,7 +194,7 @@
   background-position: center;
   transition: background-color 250ms, scale 250ms;
   scale: 1;
-  background-color: #dc56c5;
+  background-color: var(--accent-color);
 
   @include for-tablet-up {
     top: 9px;
@@ -378,7 +378,9 @@
   height: 22px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--text);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid var(--secondary-grey-color);
   border-radius: 100px;
   cursor: pointer;
 
@@ -390,11 +392,11 @@
     margin: auto;
     width: 14px;
     height: 14px;
-    background: #fff;
+    background: var(--secondary-white-color);
     border: 1px solid #5c5c5c;
     content: '';
     border-radius: 100px;
-    transition: background 200ms linear, transform 200ms ease-in-out 100ms;
+    transition: background 300ms linear, transform 300ms ease-in-out 100ms;
   }
 }
 
@@ -403,16 +405,17 @@
 
   &:checked {
     ~ label {
-      background: #fff;
+      background: var(--secondary-grey-color);
     }
     ~ label:after {
-      background: #5c5c5c;
+      background: #fff;
+
       transform: translate3d(27px, 0, 0);
     }
 
     ~ label:before {
       transform: translate3d(-84%, 23%, 0) scale(1);
-      transition: background 300ms ease-in-out, opacity 30ms ease-in-out,
+      transition: background 300ms ease-in-out, opacity 300ms ease-in-out,
         transform 400ms ease-in-out;
       opacity: 1;
     }

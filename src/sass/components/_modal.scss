@@ -23,43 +23,40 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 98%;
+  width: 96%;
   height: 96%;
-  max-width: 280px;
-  padding-top: 50px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 100px;
+  max-width: 400px;
+  padding: 50px 45px;
 
   overflow: auto;
   transform: translate(-50%, -50%);
-  border-radius: 150px 0px;
+  border-radius: 15px;
   background-color: var(--modal-background-color);
 
   @include for-tablet-up {
-    height: 96%;
+    height: auto;
     width: 96%;
 
-    max-height: 845px;
+    // max-height: 650px;
 
     max-width: 600px;
 
-    border-radius: 300px 0px;
-    padding-top: 75px;
-    padding-left: 55px;
-    padding-right: 55px;
-    padding-bottom: 75px;
+    border-radius: 130px 0px;
+    padding: 55px;
+  }
+  @media screen and (max-height: 810px) and (min-width: 734px) {
+    height: 96%;
   }
 
   @include for-desktop-up {
     width: 96%;
-    height: 96%;
+    // height: 96%;
     max-width: 700px;
-    max-height: 1010px;
-    padding-top: 90px;
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-bottom: 80px;
+    // max-height: 1010px;
+    padding: 60px;
+  }
+  @media screen and (max-height: 870px) and (min-width: 1278px) {
+    height: 96%;
   }
 }
 
@@ -80,41 +77,51 @@
 .close-svg {
   fill: currentColor;
 }
+
+.img-container {
+  margin-bottom: 16px;
+
+  @include for-tablet-up {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 50px;
+    align-items: center;
+  }
+}
+.inner-wrapper {
+  @include for-phone-only {
+    margin-bottom: 30px;
+  }
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  // align-items: flex-end;
+}
 .event-modal-img {
   object-fit: cover;
-  margin: 0 auto 20px;
-  border-radius: 100px 0;
-  width: 300px;
+  border-radius: 15px;
+  width: 100%;
   height: 100%;
 
   @include for-tablet-up {
-    width: 500px;
-    border-radius: 200px 0px;
-    margin-bottom: 40px;
-  }
-
-  @include for-desktop-up {
     width: 100%;
-    border-radius: 220px 0px;
   }
 }
 .description-container {
   margin-bottom: 24px;
+  // text-align: left;
   @include for-tablet-up {
+    text-align: left;
     margin-bottom: 40px;
-    display: flex;
-    justify-content: space-between;
   }
 }
 
 .event-info-item {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
+  text-align: left;
+
   @include for-tablet-up {
-    text-align: left;
-    align-items: flex-start;
+    display: block;
   }
 }
 .event-info-item:not(:last-child) {
@@ -137,10 +144,9 @@
   overflow: scroll;
   max-width: 245px;
   @include for-tablet-up {
-    max-width: 287px;
+    max-width: 100%;
   }
   @include for-desktop-up {
-    max-width: 427px;
     max-height: 132px;
   }
 }
@@ -149,10 +155,10 @@
 .header__prices {
   margin-bottom: 8px;
   @include for-tablet-up {
-    margin-bottom: 5px;
+    margin-bottom: 16px;
+    text-align: left;
   }
   @include for-desktop-up {
-    margin-bottom: 7px;
   }
 }
 .event-info {
@@ -173,6 +179,11 @@
   }
 }
 .tickets {
+  @include for-phone-only {
+    display: block;
+  }
+  display: flex;
+  gap: 50px;
 }
 .ticket-std {
   margin-bottom: 16px;
@@ -213,14 +224,19 @@
   }
   @include for-tablet-up {
     margin-left: 0;
+    width: 200px;
+  }
+  @include for-desktop-up {
+    width: 250px;
   }
 }
 
 .more-btn {
   display: block;
-  padding: 10px 3px;
+  padding: 10px 15px;
   margin-right: auto;
   margin-left: auto;
+
   border: 1px solid var(--accent-button-color);
   border-radius: 5px;
   background-color: transparent;
