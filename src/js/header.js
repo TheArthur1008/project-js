@@ -95,20 +95,30 @@ let root = document.documentElement;
 
 toggle.addEventListener('change', e => {
   if (e.target.checked) {
-    document.documentElement.style.setProperty('--accent-color', '#2F2ADB');
-    document.documentElement.style.setProperty(
-      '--secondary-white-color',
-      '#5c5c5c'
-    );
-    header.classList.add('light');
-    mainBg.classList.add('light');
-  } else {
     document.documentElement.style.setProperty('--accent-color', '#DC56C5');
     document.documentElement.style.setProperty(
       '--secondary-white-color',
       '#FFFFFF'
     );
+    document.documentElement.style.setProperty(
+      '--transparent-accent-color',
+      '#dc56c54d'
+    );
     header.classList.remove('light');
     mainBg.classList.remove('light');
+  } else {
+    document.documentElement.style.setProperty('--accent-color', '#4c47e7');
+    document.documentElement.style.setProperty(
+      '--secondary-white-color',
+      '#5c5c5c'
+    );
+
+    document.documentElement.style.setProperty(
+      '--transparent-accent-color',
+      '#4c47e74d'
+    );
+
+    header.classList.add('light');
+    mainBg.classList.add('light');
   }
 });
